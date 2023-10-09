@@ -1,27 +1,13 @@
-document.getElementById('registrationForm').addEventListener('submit', function(event) {
-    event.preventDefault();
+console.log("Initialisierung Supabase");
 
-    const username = document.getElementById('username').value;
-    const email = document.getElementById('email').value;
-    const password = document.getElementById('password').value;
-    const profilepic = document.getElementById('picture').value;
+// Supabase Initialisierung
 
-    // Speichern der Daten in Superbase
-    saveDataToSuperbase(username, email, password, profilepic);
-});
-
-function saveDataToSuperbase(username, email, password, profilepic) {
     const supabaseUrl = 'https://jrbxaomtmhqafpwdfgiy.supabase.co';
     const supabaseKey = 'your-api-keyeyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpyYnhhb210bWhxYWZwd2RmZ2l5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE2OTYzMTkwODksImV4cCI6MjAxMTg5NTA4OX0.Ncv7YeDZTGwbMgnUI1psActU6rf44IKjFzf706VONlM';
-    const supabase = supabase.createClient(supabaseUrl, supabaseKey);
+    const supa = supabase.createClient(supabaseUrl, supabaseKey, {
+        auth: {
+            redirectTo: window.location.origin,  // This will redirect back to the page where the request originated from
+        },
+    });
 
-    supabase
-        .from('users')
-        .insert([{ username, email, password, profilepic }])
-        .then(response => {
-            console.log('Daten erfolgreich gespeichert:', response);
-        })
-        .catch(error => {
-            console.error('Fehler beim Speichern der Daten:', error);
-        });
-}
+    export { supa }
