@@ -1,0 +1,27 @@
+:root {
+    --white-background: #F9F9F9;
+    --orange-strong: #F46524;
+    --orange-light: #F6B26B;
+}
+
+main {
+    width: 390px;
+    height: 844px;
+    border-radius: 30px;
+    background: #F9F9F9;
+    margin: auto;
+}
+
+h1 {
+    color: #000;
+    text-align: center;
+    font-family: DM Sans, Arial, Helvetica, sans-serif;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 94.7%; /* 22.728px */
+}
+
+#title {
+    padding-top: 57px;
+}
