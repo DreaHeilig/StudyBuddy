@@ -10,16 +10,16 @@ html {
     display: grid;
     justify-items: center;
     align-items: center;
-    background-color: #f46524;;
+    background-color: #f9f9f9;;
   }
   
   #main-holder {
-    width: 50%;
-    height: 70%;
+    width: 390px;
+    height: 844px;
     display: grid;
     justify-items: center;
     align-items: center;
-    background-color: #f46524;
+    background-color: #ebebeb;
     border-radius: 7px;
     box-shadow: 0px 0px 5px 2px black;
   }
@@ -49,49 +49,63 @@ html {
     display: block;
   }
   #button-registrierung{
-    background-color: #f46524;
-    color: #fff;
+    background-color: #ebebeb;
     border: none;
     cursor: pointer;
-  }
+    font-size: 12px;
 
+  }
+  #login-header {
+    color: #f46524;
+    font-size: 30px;
+  }
   #login-form {
     align-self: flex-start;
     display: grid;
     justify-items: center;
     align-items: center;
-
   }
   
   .login-form-field::placeholder {
-    color: #f46524
+    color: #000000;
+    background-color: #fff;
+    padding-left: 10px;
   }
   
   .login-form-field {
     border: none;
-    border-bottom: 1px solid #f46524;
     margin-bottom: 10px;
     border-radius: 3px;
     outline: none;
-    padding: 0px 0px 5px 5px;
+    padding: 10px 0px 10px 0px;
   }
   
   #login-form-submit {
     width: 100%;
-    padding: 7px;
+    padding: 10px 10px 10px 10px;
     border: none;
     border-radius: 5px;
     font-weight: bold;
     cursor: pointer;
     outline: none;
+    background-color: #f46524;
   }
 
-  input, button {
+  input{
     display: block;
     margin: 10px auto;
     width: 100%;
     padding: 10px;
-    font-size: 16px;
-    background-color: #f46524;
+    font-size: 12px;
+    background-color: #ffffff;
     color: #fff;
-}
+  }
+  label {
+    color: #000000;
+    font-size: 12px;
+
+
+  }
+  #remember {
+    
+  }
