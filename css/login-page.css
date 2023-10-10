@@ -24,7 +24,6 @@ main {
   display: flex;
   flex-direction: column;
   margin-top: 5%;
-
 }
 
 h1 {
@@ -76,7 +75,7 @@ h1 {
   width: 100%;
 }
 
-/* .textInput, #registrationConfirm {
+/* .textInput, #loginConfirm {
   display: block;
   margin: 10px auto;
   width: 100%;

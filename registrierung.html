@@ -5,6 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registrierung</title>
     <link rel="stylesheet" href="/css/registrierung.css">
+    <script src="https://unpkg.com/@supabase/supabase-js@2"> </script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@1.29.0/dist/umd/supabase.min.js"></script>
+    <script>
+
+        // script prüft, ob wir uns auf der root des servers befinden
+
+        window.addEventListener('DOMContentLoaded', (event) => {
+            const rootCheckElem = document.getElementById('rootCheck');
+    
+            if (window.location.pathname === "/" || window.location.pathname === "/index.html") {
+                rootCheckElem.textContent = "You are on the root of the server.";
+                rootCheckElem.style.display = "none"; // Hide it if you don't want any message on the root
+            } else {
+                rootCheckElem.innerHTML = 'Authentication funktioniert nur auf der Root des Servers! Das ist nicht hier, sondern <a href="/"> da </a>';
+            }
+        });
+    </script>
 </head>
 <body>
 
@@ -47,7 +64,8 @@
 
     </main>
 
-    <script src="script.js"></script>
-
+    <script type="module" src="js/supabase.js"></script>
+    <script type="module" src="js/registrierung.js"></script>
+    
 </body>
 </html>
