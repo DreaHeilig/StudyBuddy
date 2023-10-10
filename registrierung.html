@@ -7,14 +7,47 @@
     <link rel="stylesheet" href="/css/registrierung.css">
 </head>
 <body>
-    <h1>Registrierung</h1>
-    <form id="registrationForm">
-        <input type="text" id="username" placeholder="Benutzername" required>
-        <input type="email" id="email" placeholder="E-Mail Adresse" required>
-        <input type="password" id="password" placeholder="Passwort" required>
-        <button type="submit">Registrieren</button>
-    </form>
+
+    <main>
+
+        <h1 id="title">Account erstellen</h1>
+
+        <div id="contentContainer">
+            <div id="registrationFormContainer">
+                <form id="registrationForm">
+                    <p class="textInputTitle">Name</p>
+                    <div class="textInputContainer">
+                        <input type="text" id="username" class="textInput" placeholder="Dein Benutzername" required>
+                    </div>
+                    <p class="textInputTitle">E-Mail</p>
+                    <div class="textInputContainer">
+                        <input type="email" id="email" class="textInput" placeholder="Deine E-Mail Adresse" required>
+                    </div>
+                    <p class="textInputTitle">Passwort</p>
+                    <div class="textInputContainer">
+                        <input type="password" id="password" class="textInput" placeholder="Passwort Eingeben" required>
+                    </div>
+                    <p class="textInputTitle">Passwort Bestätigen</p>
+                    <div class="textInputContainer">
+                        <input type="password" id="passwordConfirm" class="textInput" placeholder="Passwort Bestätigen" required>
+                    </div>
+                    <div id="checkboxContainer">
+                        <input type="checkbox" id="rememberMe" name="rememberMe" value="remembered">
+                        <label for="rememberMe">Angemeldet bleiben</label>
+                    </div>
+                    <div id="buttonContainer">
+                        <button type="submit" id="registrationConfirm">Registrieren</button>
+                    </div>
+                </form>
+                <p id="alreadyHaveAccount">
+                    Du hast schon einen Account? <a href="login.html">Logge dich ein!</a>
+                </p>
+            </div>
+        </div>
+
+    </main>
 
     <script src="script.js"></script>
+
 </body>
 </html>
