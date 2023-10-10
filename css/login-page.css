@@ -1,111 +1,153 @@
-html {
-    height: 100%;
-  }
-  
+:root {
+  --white-background: #F9F9F9;
+  --orange-strong: #F46524;
+  --orange-light: #F6B26B;
+}
 
-  body {
-    height: 100%;
-    margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
-    display: grid;
-    justify-items: center;
-    align-items: center;
-    background-color: #f9f9f9;;
-  }
-  
-  #main-holder {
-    width: 390px;
-    height: 844px;
-    display: grid;
-    justify-items: center;
-    align-items: center;
-    background-color: #ebebeb;
-    border-radius: 7px;
-    box-shadow: 0px 0px 5px 2px black;
-  }
-  
-  #login-error-msg-holder {
-    width: 100%;
-    height: 100%;
-    display: grid;
-    justify-items: center;
-    align-items: center;
-  }
-  
-  #login-error-msg {
-    width: 23%;
-    text-align: center;
-    margin: 0;
-    padding: 5px;
-    font-size: 12px;
-    font-weight: bold;
-    color: #8a0000;
-    border: 1px solid #8a0000;
-    background-color: #e58f8f;
-    opacity: 0;
-  }
-  
-  #error-msg-second-line {
-    display: block;
-  }
-  #button-registrierung{
-    background-color: #ebebeb;
-    border: none;
-    cursor: pointer;
-    font-size: 12px;
+body {
+  font-family: DM Sans, Arial, sans-serif;
+}
 
-  }
-  #login-header {
-    color: #f46524;
-    font-size: 30px;
-  }
-  #login-form {
-    align-self: flex-start;
-    display: grid;
-    justify-items: center;
-    align-items: center;
-  }
-  
-  .login-form-field::placeholder {
-    color: #000000;
-    background-color: #fff;
-    padding-left: 10px;
-  }
-  
-  .login-form-field {
-    border: none;
-    margin-bottom: 10px;
-    border-radius: 3px;
-    outline: none;
-    padding: 10px 0px 10px 0px;
-  }
-  
-  #login-form-submit {
-    width: 100%;
-    padding: 10px 10px 10px 10px;
-    border: none;
-    border-radius: 5px;
-    font-weight: bold;
-    cursor: pointer;
-    outline: none;
-    background-color: #f46524;
-  }
+main {
+  width: 390px;
+  height: 844px;
+  margin: auto;
+  background-color: var(--white-background);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+}
 
-  input{
-    display: block;
-    margin: 10px auto;
-    width: 100%;
-    padding: 10px;
-    font-size: 12px;
-    background-color: #ffffff;
-    color: #fff;
-  }
-  label {
-    color: #000000;
-    font-size: 12px;
+#contentContainer {
+  width: 317px;
+  margin-inline: auto;
+  display: flex;
+  flex-direction: column;
+  margin-top: 5%;
 
+}
 
-  }
-  #remember {
-    
-  }
+h1 {
+  color: var(--orange-strong);
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  text-align: center;
+  margin-top: 84px;
+}
+
+.textInputTitle {
+  color: #000;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.textInput::placeholder {
+  color: #000;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.textInputContainer {
+  width: 317px;
+  height: 50px;
+  flex-shrink: 0;
+  background-color: #FFF;
+  filter: drop-shadow(0px 4px 62px rgba(153, 171, 198, 0.18));
+  border-radius: 10px;
+  display: flex;
+  flex-direction: row;
+}
+
+.textInputContainer:focus-within {
+  border: 1px solid var(--orange-light);
+}
+
+.textInput {
+  margin-left: 10px;
+  border-style: none;
+  outline: none;
+  border-radius: 10px;
+  width: 100%;
+}
+
+/* .textInput, #registrationConfirm {
+  display: block;
+  margin: 10px auto;
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+} */
+
+#checkboxContainer {
+  display: flex;
+  align-items: center;
+  margin-top: 28px;
+  gap: 10px;
+}
+
+#rememberMe {
+  width: 20px;
+  height: 20px;
+  border-style: none;
+  border-radius: 7px;
+  background-color: #C4C4C4;
+
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+#rememberMe:checked {
+  background-color: var(--orange-strong);
+}
+
+label[for="rememberMe"] {
+  color: #4B4B4B;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+#buttonContainer {
+  display: flex;
+  justify-content: center;
+  margin-top: 28px;
+}
+
+button {
+  width: 266px;
+  height: 50px;
+  border-radius: 6px;
+  background-color: var(--orange-strong);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  margin: 0 auto;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: 0.84px;
+  text-transform: uppercase;
+}
+
+#newAccount {
+  margin-top: 36px;
+  color: #000;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  text-align: center;
+}
+
+#newAccount a {
+  color: #000;
+}

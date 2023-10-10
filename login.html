@@ -10,26 +10,34 @@
 </head>
 
 <body>
-  <main id="main-holder">
-    <h1 id="login-header">Willkommen zurück!</h1>
-    
-    <div id="login-error-msg-holder">
-      <p id="login-error-msg">Invalid username <span id="error-msg-second-line">and/or password</span></p>
-    </div>
-    
-    <form id="login-form">
-      <input type="text" name="username" id="username-field" class="login-form-field" placeholder="Username">
-      <input type="password" name="password" id="password-field" class="login-form-field" placeholder="Password">
-      <label id="angemeldetbleiben">
-        <input type="checkbox" class="remember" name="remember"> Angemeldet bleiben
-      </label>
-      <input type="submit" value="Login" id="login-form-submit">
-      <button type="button" id="button-registrierung"><a href="registrierung.html" formtarget="_blank">Neu hier? Registriere dich jetzt!</a></button>
-    </form>
-    <form>
-    </form>
-  
-  </main>
+  <h1 id="title">Willkommen zurück!</h1>
+
+  <div id="contentContainer">
+      <div id="registrationFormContainer">
+          <form id="registrationForm">
+              <p class="textInputTitle">E-Mail</p>
+              <div class="textInputContainer">
+                  <input type="email" id="email" class="textInput" placeholder="Deine E-Mail Adresse" required>
+              </div>
+              <p class="textInputTitle">Passwort</p>
+              <div class="textInputContainer">
+                  <input type="password" id="password" class="textInput" placeholder="Passwort Eingeben" required>
+              </div>
+              <div id="checkboxContainer">
+                  <input type="checkbox" id="rememberMe" name="rememberMe" value="remembered">
+                  <label for="rememberMe">Angemeldet bleiben</label>
+              </div>
+              <div id="buttonContainer">
+                  <button type="submit" id="registrationConfirm">Login</button>
+              </div>
+          </form>
+          <p id="newAccount">
+              Neu hier? <a href="registrierung.html">Registriere dich jetzt!</a>
+          </p>
+      </div>
+  </div>
+
+</main>
 </body>
 
 </html>
