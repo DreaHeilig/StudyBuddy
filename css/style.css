@@ -1,0 +1,88 @@
+:root {
+    --white-background: #F9F9F9;
+    --orange-strong: #F46524;
+    --orange-light: #F6B26B;
+  }
+  
+  body {
+    font-family: DM Sans, Arial, sans-serif;    
+  }
+  
+  main {
+    width: 80%;
+    max-width: 400px;
+    height: 60vh;
+    margin: auto;
+    background-color: var(--white-background);
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+  }
+
+
+.hidden {
+    display: none;
+}
+
+#logoScreen {
+    text-align: center;
+    padding: 50px;
+    border-radius: 30px;
+    background: #F46524;
+    display: flex;
+    width: 80%;
+    max-width: 400px;
+    height: 60vh;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#logoScreen img {
+    height: 20%;
+}
+
+#startScreen {
+    width: 80%;
+    max-width: 400px;
+    height: 60vh;
+    border-radius: 30px;
+    background: #F9F9F9;
+}
+
+#startScreen h1 {
+    color: #000;
+    font-family: DM Sans;
+    font-size: 3rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 94.7%;
+    justify-items: center;
+    margin-top: 100%;
+    margin-inline-start: 10%;
+}
+
+#weiterTaste {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    margin-left: 70%;
+    margin-top: 30%;
+}
+
+#weiterTaste svg {
+    width: 60px;
+    height: 60px;
+}
+
+#weiterTaste:focus {
+    outline: none;
+}
+
+
+
+
+
+
+
+

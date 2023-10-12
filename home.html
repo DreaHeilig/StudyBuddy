@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meine App</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <main>
+    <div id="startScreen" class="hidden">
+        <h1>Finde deinen Buddy!</h1>
+        <button id="weiterTaste" onclick="redirectToLoginPage()">
+            <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 60 60" fill="none">
+                <circle cx="30" cy="30" r="30" fill="#F46524"/>
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M16.1223 30.32C16.1187 29.9654 16.2207 29.6242 16.4057 29.3716C16.5908 29.1189 16.8438 28.9755 17.1091 28.9728L40.7034 28.7332L34.3216 20.3841C34.1312 20.1349 34.0222 19.7955 34.0186 19.4404C34.015 19.0853 34.1171 18.7437 34.3024 18.4908C34.4877 18.2378 34.741 18.0941 35.0066 18.0915C35.2723 18.0888 35.5285 18.2272 35.7189 18.4764L43.8304 29.0919C43.9249 29.2151 44.0003 29.3619 44.0523 29.5239C44.1044 29.6858 44.1322 29.8597 44.1339 30.0356C44.1357 30.2114 44.1115 30.3859 44.0628 30.5488C44.014 30.7118 43.9416 30.8601 43.8497 30.9852L35.9556 41.7633C35.7703 42.0162 35.517 42.1599 35.2514 42.1626C34.9857 42.1653 34.7295 42.0268 34.5391 41.7776C34.3487 41.5285 34.2397 41.189 34.2361 40.834C34.2325 40.4789 34.3346 40.1373 34.5199 39.8843L40.7306 31.4074L28.9334 31.5272L17.1363 31.647C16.871 31.6497 16.6151 31.5114 16.4249 31.2625C16.2348 31.0137 16.1259 30.6746 16.1223 30.32Z" fill="white"/>
+            </svg>
+        </button>
+        
+        <script>
+            function redirectToLoginPage() {
+                window.location.href = "login.html"; // Hier den Pfad zu Ihrer Login-Seite einfügen
+            }
+        </script>
+    </div>
+
+
+    
+    <div id="logoScreen">
+        <img src="img/makeitmeme_jSHQ6.jpeg" alt="Logo">
+    </div>
+
+    <script src="js/script.js"></script>
+</main>
+</body>
+</html>
