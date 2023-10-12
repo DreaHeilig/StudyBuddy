@@ -73,6 +73,7 @@
 #weiterTaste svg {
     width: 60px;
     height: 60px;
+    margin-left: 90%;
 }
 
 #weiterTaste:focus {
