@@ -31,8 +31,8 @@ body {
     background: #F46524;
     display: flex;
     width: 80%;
-    max-width: 400px;
-    height: 60vh;
+    max-width: 40vh;
+    height: 90vh;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -42,7 +42,7 @@ body {
 }
 
 #startScreen {
-    width: 80%;
+    width: 100%;
     max-width: 400px;
     height: 60vh;
     border-radius: 30px;
@@ -57,8 +57,7 @@ body {
     font-weight: 700;
     line-height: 94.7%;
     justify-items: center;
-    margin-top: 100%;
-    margin-inline-start: 10%;
+    margin-top: 20rem;
 }
 
 #weiterTaste {
@@ -66,14 +65,14 @@ body {
     border: none;
     padding: 0;
     cursor: pointer;
-    margin-left: 70%;
-    margin-top: 30%;
+    margin-left: 8rem;
+    margin-top: 5rem;
 }
 
 #weiterTaste svg {
     width: 60px;
     height: 60px;
-    margin-left: 90%;
+
 }
 
 #weiterTaste:focus {

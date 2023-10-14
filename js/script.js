@@ -1,4 +1,4 @@
-import { supa } from "/js/supabase.js";
+//import { supa } from "/js/supabase.js";
 
 // js ------------------------home-page-js----------------------------//
 
@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function() {
     setTimeout(function() {
         document.getElementById('logoScreen').style.display = 'none';
         document.getElementById('startScreen').classList.remove('hidden');
-    }, 3000); // Zeige den Startbildschirm nach 3000 Millisekunden (3 Sekunden)
+    }, 5000); // Zeige den Startbildschirm nach 5000 Millisekunden (5 Sekunden)
 });
 
 
