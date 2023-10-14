@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Account</title>
-    <link rel="stylesheet" href="css/account.css">
+    <link rel="stylesheet" href="css/style.css">
     <script src="https://unpkg.com/@supabase/supabase-js@2"> </script>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@1.29.0/dist/umd/supabase.min.js"></script>
 </head>
@@ -15,34 +15,29 @@
         </div>
         <div id="infoContainer">
             <div>
-                <p class="infoTitle">Name</p>
+                <p class="textInputTitle">Name</p>
                 <div class="userInfoField" class="buttonField">
                     <p>
-                        <span id="userInfoName">
+                        <span id="userInfoName" class="textInput">
                             Max Muster
                         </span>
                     </p>
                     <button id="editName">Edit Username</button>
                 </div>
             </div>
-            <div>
-                <p class="infoTitle">Email</p>
-                <div class="userInfoField">
-                    <p>max.muster@example.com</p>
-                </div>
+            <p class="textInputTitle">E-Mail</p>
+            <div class="textInputContainer">
+                <input type="email" id="email" class="textInput" placeholder="Deine E-Mail Adresse" required>
             </div>
-            <div>
-                <p class="infoTitle">Aktivitäten erstellt</p>
-                <div class="userInfoField">
-                    <p>69</p>
-                </div>
+            <p class="textInputTitle">Aktivitäten erstellt:</p>
+            <div class="textInputContainer">
+                <input type="ownactivitys" id="ownactivitys" class="textInput" placeholder="Anzahl erstellte Aktivitäten" required>
             </div>
-            <div>
-                <p class="infoTitle">Aktivitäten teilgenommen</p>
-                <div class="userInfoField">
-                    <p>69</p>
-                </div>
-        </div>
+
+            <p class="textInputTitle">Aktivitäten teilgenommen:</p>
+            <div class="textInputContainer">
+                <input type="doneactivitys" id="doneactivitys" class="textInput" placeholder="Anzahl bisheriger Aktivitäten" required>
+            </div>            
         </div>
     </main>
     <script src="js/account.js"></script>
