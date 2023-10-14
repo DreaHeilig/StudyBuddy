@@ -4,14 +4,14 @@
     --orange-light: #F6B26B;
   }
   
-  body {
+body {
     font-family: DM Sans, Arial, sans-serif;    
   }
   
-  main {
+ main {
     width: 80%;
-    max-width: 400px;
-    height: 60vh;
+    max-width: 40vh;
+    height: 90vh;
     margin: auto;
     background-color: var(--white-background);
     border-radius: 1rem;
@@ -160,7 +160,6 @@
     border-style: none;
     border-radius: 0.4375rem;
     background-color: #C4C4C4;
-  
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
@@ -242,9 +241,6 @@
     margin-top: 59px;
 }
 
-#title {
-    padding-top: 57px;
-}
 #editname {
     width: 0.2rem; 
 
