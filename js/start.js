@@ -1,14 +1,5 @@
-//import { supa } from "/js/supabase.js";
 
-// js ------------------------home-page-js----------------------------//
-
-
-document.addEventListener('DOMContentLoaded', function() {
-    setTimeout(function() {
-        document.getElementById('logoScreen').style.display = 'none';
-        document.getElementById('startScreen').classList.remove('hidden');
-    }, 5000); // Zeige den Startbildschirm nach 5000 Millisekunden (5 Sekunden)
-});
+/*import { supa } from "/js/supabase.js";
 
 
 // js ------------------------registration-js----------------------------//
@@ -27,10 +18,10 @@ async function login() {
     } else {
         console.log("Logged in as ", email);
     }
-  }
+  }*/
   
   // Function to sign up using email and password
-  async function signUp() {
+  /*async function signUp() {
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
   
@@ -41,8 +32,67 @@ async function login() {
     } else {
         console.log("Signed up as ", email);
     }
-  }
+  } */
+// script.js
+
+import { supa } from "/js/supabase.js";
+
+async function signUp() {
+    const username = document.getElementById('username').value;
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+    const confirmPassword = document.getElementById('passwordConfirm').value;
+
+    const {user, error } = await supa.auth.signUp({email, password });
+
+    if (password !== passwordConfirm) {
+        alert("Passwords do not match. Please try again.");
+        return;
+    }
+    if (error) {
+        console.error("Error during sign up: ", error.message);
+    } else {
+        const { data, error } = await supa
+            .from('profiles')
+            .insert({
+                    profiles_id: user.id,
+                    username: username,
+                    email: email,
+                    password: password, // Remember to hash the password before saving to the database for security
+                    avatar_url: 'default_avatar_url'
+                });
+
+        if (error) {
+            console.log("Error during sign up: ", error.message);
+        } else {
+            console.log("Daten wurden erfolgreich gespeichert:", data);
+            window.location.href = "login.html";
+        }
+    }
+}
+
+
+
+document.getElementById('registrationForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+    signUp();
+});
+
   
+
+
+// Check and display the initial user status
+const initialUser = supa.auth.user();
+updateUserStatus(initialUser);
+
+// Event listeners for the buttons
+document.getElementById('loginConfirm').addEventListener('click', login);
+document.getElementById('registrationConfirm').addEventListener('click', () => {
+  console.log('gggg');
+});
+
+  
+
   // Function to update user status
   function updateUserStatus(user) {
     const userStatusElement = document.getElementById('userStatus');
@@ -53,15 +103,7 @@ async function login() {
         userStatusElement.textContent = "Not authenticated.";
     }
   }
-  
-  // Check and display the initial user status
-  const initialUser = supa.auth.user();
-  updateUserStatus(initialUser);
-  
-  // Event listeners for the buttons
-  document.getElementById('loginConfirm').addEventListener('click', login);
-  document.getElementById('registrationConfirm').addEventListener('click', signUp);
-  
+
   // Listener for authentication state changes
   supa.auth.onAuthStateChange((event, session) => {
     if (event === "SIGNED_IN") {
