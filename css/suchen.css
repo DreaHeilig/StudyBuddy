@@ -26,12 +26,13 @@ h1 {
 }
 
 .dropdown-city {
-    width: 215px;
+    width: 150px;
     height: 40px;
     padding-bottom: 0px;
     justify-content: center;
     align-items: center;
-    margin-left: 58px;
+    margin-left: 30px;
+    border-radius: 10px;
 }
 
 #button-container {
@@ -41,7 +42,7 @@ h1 {
 .rounded-button {
     width: 41px;
     height: 41px;
-    position: absolute;
+    /* position: absolute; */
     border-radius: 100%;
     padding: 0;
     border: none;
