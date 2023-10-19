@@ -45,17 +45,17 @@ async function signUp() {
 
     const {user, error } = await supa.auth.signUp({email, password });
 
-    if (password !== passwordConfirm) {
+    /*if (password !== passwordConfirm) {
         alert("Passwords do not match. Please try again.");
         return;
-    }
+    }*/
     if (error) {
         console.error("Error during sign up: ", error.message);
     } else {
-        const { data, error } = await supa
-            .from('profiles')
+       const { data, error } = await supa
+            .from('user')
             .insert({
-                    profiles_id: user.id,
+                    user_id: user.id,
                     username: username,
                     email: email,
                     password: password, // Remember to hash the password before saving to the database for security
@@ -65,7 +65,7 @@ async function signUp() {
         if (error) {
             console.log("Error during sign up: ", error.message);
         } else {
-            console.log("Daten wurden erfolgreich gespeichert:", data);
+            console.log("Daten wurden erfolgreich gespeichert:");
             window.location.href = "login.html";
         }
     }
