@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Suchen</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="https://unpkg.com/@supabase/supabase-js@2"> </script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@1.29.0/dist/umd/supabase.min.js"></script>
+</head>
+<body>
+    <main>  
+        <h1>Übersicht</h1>
+        <div id="infoContainer">
+            <a href=""><div class="box" id="activities">
+                <h2>Meine Aktivitäten</h2></a>
+            </div>
+            <a href=""><div class="box" id="notifications">
+                <h2>Benachrichtigungen</h2></a>
+            </div>
+            <a href="account.html"><div class="box" id="account">
+                <h2>Mein Konto</h2></a>
+            </div>
+            <a href="login.html"><button id="logout">Logout</button></a>
+            </div>
+</main>
+    
+    <footer class="footer">
+        <a href="/suchen.html"><img id="imghome" src="img/home.svg" alt="home"></a>
+        <a href="/menu.html"><img id="imgmenu" src="img/hamburger.svg" alt="menü"></a>
+    </footer>
+    
+
+
+    <script type="module" src="js/supabase.js"></script>
+    <script type="module" src="js/supabase_api.js"></script>
+</body>
+</html>

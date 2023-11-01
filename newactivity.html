@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Suchen</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="https://unpkg.com/@supabase/supabase-js@2"> </script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@1.29.0/dist/umd/supabase.min.js"></script>
+</head>
+<body>
+    <main>  
+        <h1>Aktivität erstellen</h1>
+
+<!-- Dropdown Menu -->
+
+<!-- Wer, Wie, Wo-->
+        <div id="infoContainer">
+            <div class="dropdown-container">
+                <select class="dropdown-city">
+                    <option value="option1">Stadt auswählen</option>
+                    <option value="option2">Bern</option>
+                    <option value="option3">Zürich</option>
+                    <option value="option5">Genf</option>
+                </select>
+            </div>
+            <div>
+                <div class="textInputContainernewactivity">
+                    <input type="adresse" id="adresse" class="textInput" placeholder="Adresse" required>
+                </div>
+            </div>
+            <div class="textInputContainernewactivity">
+                <input type="placedescription" id="placedescription" class="textInput" placeholder="Beschreibung Ort" required>
+            </div>
+            <div class="textInputContainernewactivity">
+                <input type="kindofactivity" id="kindofactivity" class="textInput" placeholder="Woran arbeitest du?" required>
+            </div>
+            <div class="textInputContainernewactivity">
+                <input type="needhelp" id="needhelp" class="textInput" placeholder="Brauchst du Hilfe?" required>
+            </div>       
+            <div class="textInputContainernewactivity">
+                <input type="kindofknowledge" id="kindofknowledge" class="textInput" placeholder="Braucht man Kenntnisse? Welche?" required>
+            </div>         
+        </div>
+
+<!-- Button 1 (Rundförmig) -->
+        <button class="rounded-button"><img src="img/go.svg" alt="weiter"></button>
+
+    </main>
+    
+    <footer class="footer">
+        <a href="/suchen.html"><img id="imghome" src="img/home.svg" alt="home"></a>
+        <a href="/menu.html"><img id="imgmenu" src="img/hamburger.svg" alt="menü"></a>
+    </footer>
+    
+
+
+    <script type="module" src="js/supabase.js"></script>
+    <script type="module" src="js/supabase_api.js"></script>
+    <script type="module" src="js/start.js"></script>
+</body>
+</html>
