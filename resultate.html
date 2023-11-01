@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Suchen</title>
+    <title>Resultate</title>
     <link rel="stylesheet" href="/css/resultate.css">
     <script src="https://unpkg.com/@supabase/supabase-js@2"> </script>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@1.29.0/dist/umd/supabase.min.js"></script>
@@ -11,17 +11,19 @@
 <body>
     <main>  
         <h1>Resultate</h1>
-        <!-- Button 1 (Rundförmig) -->
-        <button class="rounded-button"><img src="img/heart.svg" alt="herz"></button>
+        <img id="locationimg" src="img/Cafe.png" alt="cafe">
+        <section>
+            <!-- Button 1 (Rundförmig) -->
+            <button class="rounded-button"><img src="img/heart.svg" alt="herz"></button>
 
-<!-- Button 2 -->
-        <button class="rounded-button"><img src="img/Cross.svg" alt="kreuz"></button>
-
+             <!-- Button 2 -->
+            <button class="rounded-button"><img src="img/Cross.svg" alt="kreuz"></button>
+        </section>
     </main>
     
     <footer>
-        <img src="img/home.svg" alt="home">
-        <img src="img/hamburger.svg" alt="menü">
+        <a href="/suchen.html"><img src="img/home.svg" alt="home"></a>
+        <a href="/menu.html"><img src="img/hamburger.svg" alt="menü"></a>
     </footer>
 
 

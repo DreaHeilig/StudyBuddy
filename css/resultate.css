@@ -28,11 +28,17 @@ footer {
     background-color: var(--orange-light);
     border-radius: 0 0 1rem 1rem;
     display: flex;
-    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
 }
 
-img {
-width: 6vh;
+#locationimg {
+width: 30vh;
+margin: 3rem auto 5rem auto; 
+}
+
+footer img {
+    width: 6vh;
 }
 
 h1 {
@@ -41,6 +47,10 @@ h1 {
     margin-top: 70px ;
 }
 
+section {
+    display:flex;
+    justify-content: space-evenly;
+}
 
 #button-container {
     position: relative;
