@@ -1,40 +1,4 @@
 
-/*import { supa } from "/js/supabase.js";
-
-
-// js ------------------------registration-js----------------------------//
-
-
-// Function to login using email and password
-async function login() {
-    const email = document.getElementById('emailInput').value;
-    const password = document.getElementById('password').value;
-    const username = document.getElementById('username').value;
-  
-    const { error } = await supa.auth.signIn({ email, password, username });
-  
-    if (error) {
-        console.error("Error during login: ", error.message);
-    } else {
-        console.log("Logged in as ", email);
-    }
-  }*/
-  
-  // Function to sign up using email and password
-  /*async function signUp() {
-    const email = document.getElementById('email').value;
-    const password = document.getElementById('password').value;
-  
-    const { error } = await supa.auth.signUp({ email, password });
-  
-    if (error) {
-        console.error("Error during sign up: ", error.message);
-    } else {
-        console.log("Signed up as ", email);
-    }
-  } */
-// script.js
-
 import { supa } from "/js/supabase.js";
 
 async function signUp() {
