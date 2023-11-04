@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glückwunsch</title>
+    <link rel="stylesheet" href="/css/congrats.css">
+    <script src="https://unpkg.com/@supabase/supabase-js@2"> </script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@1.29.0/dist/umd/supabase.min.js"></script>
+</head>
+<body>
+
+    <main>
+
+        <h1 class="blackTitle">GLÜCKWUNSCH!</h1>
+
+        <div class="box" id="congratulations">
+            <div id="congratsTitleContainer">
+                <p id="congratsTitle">StudyBuddy gefunden!</p>
+            </div>
+            <div class="congratsTextContainer">
+                <p class="congratsText">Wir haben <span class="matchUserContainer"></span> die Adresse deiner Aktivität gegeben. <span class="matchUserContainer"></span> ist auf dem Weg zu dir und wird sich in Kürze zu dir gesellen.</p>
+            </div>
+            <div class="congratsTextContainer">
+                <p class="congratsText">Vergewissere dich, dass <span class="matchUserContainer"></span> dich schnell am Ort finden kann, damit ihr gleich loslegen könnt.</p>
+            </div>
+            
+        </div>
+
+
+    </main>
+
+    <footer class="footer">
+        <a href="/suchen.html"><img id="imghome" src="img/home.svg" alt="home"></a>
+        <a href="/menu.html"><img id="imgmenu" src="img/hamburger.svg" alt="menü"></a>
+    </footer>
+
+    <script type="module" src="js/supabase.js"></script>
+    <script type="module" src="js/supabase_api.js"></script>
+    <script type="module" src="js/start.js"></script>
+
+</body>
+</html>
