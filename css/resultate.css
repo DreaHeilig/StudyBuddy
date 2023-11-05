@@ -68,3 +68,18 @@ section {
 .rounded-button img {
     width: 100%;
 }
+
+#infoBoxbestaetigung {
+    display: flex;
+    flex-direction: column;
+    width: 292px;
+    padding: 10px 30px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+    border-radius: 20px;
+    background: #FFF;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  }
+  

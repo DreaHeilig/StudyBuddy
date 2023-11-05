@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resultate</title>
+    <link rel="stylesheet" href="/css/resultate_details.css">
+    <script src="https://unpkg.com/@supabase/supabase-js@2"> </script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@1.29.0/dist/umd/supabase.min.js"></script>
+</head>
+<body>
+    <main>  
+        <h1>Resultate</h1>
+
+        <img id="locationimg" src="img/bibliothek.png" alt="bibliothek">
+
+        <div id="infoBoxcontainer">
+            <div id="infoBoxbestaetigung">
+                <h2>Details:</h2>
+                <div class="textInputContainerbestaetigung">
+                    <p>Wer sucht: <span id="username"></span></p>
+                    <p>Wo: <span id="placedescription"></span></p>
+                    <p>Arbeitet an: <span id="kindofactivity"></span></p>
+                    <p>Hilfe benötigt: <span id="needhelp"></span></p>
+                    <p>Kenntnisse notwendig: <span id="kindofknowledge"></span></p>
+                </div>
+            </div>
+        </div>
+
+    </main>
+    
+    <footer>
+        <a href="/suchen.html"><img src="img/home.svg" alt="home"></a>
+        <a href="/menu.html"><img src="img/hamburger.svg" alt="menü"></a>
+    </footer>
+
+
+    <script type="module" src="js/supabase.js"></script>
+    <script type="module" src="js/supabase_api.js"></script>
+    <script type="module" src="js/resultate_details.js"></script>
+</body>
+</html>
