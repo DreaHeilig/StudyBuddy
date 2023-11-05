@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Suchen</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="https://unpkg.com/@supabase/supabase-js@2"> </script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@1.29.0/dist/umd/supabase.min.js"></script>
+</head>
+<body>
+    <main>  
+        <h1>Bestätigung</h1>
+
+
+    <div id="infoBoxcontainer">
+        <div id="infoBoxbestaetigung">
+            <h2>Details:</h2>
+            <div class="textInputContainerbestaetigung">
+                <p>Wer sucht: <span id="username"></span></p>
+                <p>Wo: <span id="placedescription"></span></p>
+                <p>Arbeitet an: <span id="kindofactivity"></span></p>
+                <p>Hilfe benötigt: <span id="needhelp"></span></p>
+                <p>Kenntnisse notwendig: <span id="kindofknowledge"></span></p>
+            </div>
+        </div>
+    </div>
+
+<!-- Button 1 (Rundförmig) -->
+        <button type="submit" class="rounded-button" id="newactivity" onclick="window.location.href = 'menu.html';"><img src="img/go.svg" alt="weiter"></button>
+
+
+    </main>
+    
+    <footer class="footer">
+        <a href="/suchen.html"><img id="imghome" src="img/home.svg" alt="home"></a>
+        <a href="/menu.html"><img id="imgmenu" src="img/hamburger.svg" alt="menü"></a>
+    </footer>
+    
+
+
+    <script type="module" src="js/supabase.js"></script>
+    <script type="module" src="js/supabase_api.js"></script>
+    <script type="module" src="js/newactivity.js"></script>
+</body>
+</html>
