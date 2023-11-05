@@ -1,34 +1,36 @@
 import { supa } from "/js/supabase.js";
-
-async function createNewActivity() {
-    const adresse = document.getElementById('adresse').value;
+async function createPost(event) {
+    event.preventDefault();
     const placedescription = document.getElementById('placedescription').value;
     const kindofactivity = document.getElementById('kindofactivity').value;
     const needhelp = document.getElementById('needhelp').value;
     const kindofknowledge = document.getElementById('kindofknowledge').value;
 
-    const user = supa.auth.user(); // Hier holen wir den angemeldeten Benutzer
+    const user = await supa.auth.user();
 
-    const { data, error } = await supa
-        .from('post')
-        .insert([
-            {
-                user_id: user.id, // Hier fügen wir die Benutzer-ID zum Post hinzu
-                adresse: adresse,
-                placedescription: placedescription,
-                kindofactivity: kindofactivity, 
-                needhelp: needhelp,
-                kindofknowledge: kindofknowledge,
+
+    if (user) {
+        const { data, error } = await supa
+            .from('post')
+            .insert([
+                {
+                    user_id: user.id,
+                    placedescription: placedescription,
+                    kindofactivity: kindofactivity, 
+                    needhelp: needhelp,
+                    kindofknowledge: kindofknowledge,
+                }
+            ]);
+            if (error) {
+                console.log("Error during create new post: ", error.message);
+            } else {
+                console.log("Post wurde erfolgreich gespeichert:");
+                window.location.href = "bestaetigung.html";
             }
-        ]);
-
-    if (error) {
-        console.log("Error during create new activity: ", error.message);
-    } else {
-        console.log("Post wurde erfolgreich gespeichert:");
-        window.location.href = "bestaetigungsseite.html"; // Auf die Bestätigungsseite weiterleiten
+        }
     }
-}
-
-// Event Listener für den Button
-document.getElementById('newactivity').addEventListener('click', createNewActivity);
+    
+    document.getElementById('postForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+        createPost();
+    });

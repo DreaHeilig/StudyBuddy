@@ -94,22 +94,47 @@ document.getElementById('registrationConfirm').addEventListener('click', () => {
 
   // js ------------------------login-page-js----------------------------//
 
-const loginForm = document.getElementById("login-form");
-const loginButton = document.getElementById("login-form-submit");
-const loginErrorMsg = document.getElementById("login-error-msg");
+//const loginForm = document.getElementById("login-form");
+//const loginButton = document.getElementById("login-form-submit");
+//const loginErrorMsg = document.getElementById("login-error-msg");
 
-loginButton.addEventListener("click", (e) => {
-    e.preventDefault();
-    const username = loginForm.username.value;
-    const password = loginForm.password.value;
+//loginButton.addEventListener("click", (e) => {
+   // e.preventDefault();
+   // const username = loginForm.username.value;
+    //const password = loginForm.password.value;
 
-    if (username === "user" && password === "web_dev") {
-        alert("You have successfully logged in.");
-        location.reload();
+   // if (username === "user" && password === "web_dev") {
+    //    alert("You have successfully logged in.");
+   //     location.reload();
+   // } else {
+  //      loginErrorMsg.style.opacity = 1;
+  //  }
+//}) 
+
+
+async function loginUser(event) {
+    event.preventDefault();
+
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+
+    const { data, error } = await supa
+    .from('user')
+    .select({
+            email: email,
+            password: password, // Remember to hash the password before saving to the database for security
+        });
+
+    if (error) {
+        console.error("Error during login: ", error.message);
     } else {
-        loginErrorMsg.style.opacity = 1;
+        console.log("Login successful");
+        window.location.href = "home.html";
     }
-})
+}
+
+document.getElementById('loginForm').addEventListener('submit', loginUser);
+
 
 // js ------------------------account-js----------------------------//
 
