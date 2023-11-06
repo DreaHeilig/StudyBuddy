@@ -12,38 +12,31 @@
     <main>  
         <h1>Aktivität erstellen</h1>
 
-<!-- Wer, Wie, Wo-->
-    <div id="infoContainer">
-        <div id="postForm">
-            <div class="dropdown-container">
-                <select class="dropdown-city">
-                    <option value="option1">Stadt auswählen</option>
-                    <option value="option2">Bern</option>
-                    <option value="option3">Zürich</option>
-                    <option value="option5">Genf</option>
-                </select>
-            </div>
-            <div>
+    <!-- Wer, Wie, Wo-->
+        <div id="infoContainer">
+            <div id="postForm">
                 <div class="textInputContainernewactivity">
                     <input type="adresse" id="adresse" class="textInput" placeholder="Adresse" required>
                 </div>
-            </div>
-            <div class="textInputContainernewactivity">
-                <input type="placedescription" id="placedescription" class="textInput" placeholder="Beschreibung Ort" required>
-            </div>
-            <div class="textInputContainernewactivity">
-                <input type="kindofactivity" id="kindofactivity" class="textInput" placeholder="Woran arbeitest du?" required>
-            </div>
-            <div class="textInputContainernewactivity">
-                <input type="needhelp" id="needhelp" class="textInput" placeholder="Brauchst du Hilfe?" required>
+                <div class="textInputContainernewactivity">
+                    <input type="placedescription" id="placedescription" class="textInput" placeholder="Beschreibung Ort" required>
+                </div>
+                <div class="textInputContainernewactivity">
+                    <input type="kindofactivity" id="kindofactivity" class="textInput" placeholder="Woran arbeitest du?" required>
+                </div>
+                <div class="textInputContainernewactivity">
+                    <input type="needhelp" id="needhelp" class="textInput" placeholder="Brauchst du Hilfe?" required>
+                </div>       
+                <div class="textInputContainernewactivity">
+                    <input type="kindofknowledge" id="kindofknowledge" class="textInput" placeholder="Braucht man Kenntnisse? Welche?" required>
+                </div> 
+                <div class="textInputContainernewactivity">
+                    <input type="file" id="photo" accept="image/*" class="textInput" required>
+                </div>
             </div>       
-            <div class="textInputContainernewactivity">
-                <input type="kindofknowledge" id="kindofknowledge" class="textInput" placeholder="Braucht man Kenntnisse? Welche?" required>
-            </div>        
         </div> 
-    </div>
 
-<!-- Button 1 (Rundförmig) -->
+    <!-- Button 1 (Rundförmig) -->
         <button type="submit" class="rounded-button" id="newactivity"><img src="img/go.svg" alt="weiter"></button>
 
     </main>

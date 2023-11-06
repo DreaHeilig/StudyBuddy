@@ -1,36 +1,50 @@
 import { supa } from "/js/supabase.js";
-async function createPost(event) {
-    event.preventDefault();
+
+document.getElementById('newactivity').addEventListener('click', async () => {
+    const adresse = document.getElementById('adresse').value;
     const placedescription = document.getElementById('placedescription').value;
     const kindofactivity = document.getElementById('kindofactivity').value;
     const needhelp = document.getElementById('needhelp').value;
     const kindofknowledge = document.getElementById('kindofknowledge').value;
+    const photo = document.getElementById('photo').files[0];
 
-    const user = await supa.auth.user();
+    if (!adresse || !placedescription || !kindofactivity || !needhelp || !kindofknowledge || !photo) {
+        alert('Bitte fülle alle Felder aus und lade ein Foto hoch.');
+        return;
+    }
 
+    try {
+        // Hochladen des Fotos
+        const { data, error } = await supa.storage.from('avatars').upload(`bilder/${photo.name}`, photo);
 
-    if (user) {
-        const { data, error } = await supa
+        if (error) {
+            throw error;
+        }
+
+        const imageUrl = data.Key;
+
+        // Speichern der Daten in der Tabelle "post"
+        const { data: postData, error: postError } = await supa
             .from('post')
             .insert([
-                {
-                    user_id: user.id,
-                    placedescription: placedescription,
-                    kindofactivity: kindofactivity, 
-                    needhelp: needhelp,
-                    kindofknowledge: kindofknowledge,
-                }
+                {   adresse,
+                    placedescription,
+                    kindofactivity,
+                    needhelp,
+                    kindofknowledge,
+                    photo_url: imageUrl, // Speichern der URL des hochgeladenen Fotos
+                },
             ]);
-            if (error) {
-                console.log("Error during create new post: ", error.message);
-            } else {
-                console.log("Post wurde erfolgreich gespeichert:");
-                window.location.href = "bestaetigung.html";
-            }
+
+        if (postError) {
+            throw postError;
         }
+
+        // Erfolgreich erstellt, zur bestaetigungs.html Seite wechseln
+        window.location.href = `bestaetigung.html?username=${adresse}&placedescription=${placedescription}&kindofactivity=${kindofactivity}&needhelp=${needhelp}&kindofknowledge=${kindofknowledge}`;
+
+    } catch (error) {
+        console.error('Error:', error.message);
+        alert('Es ist ein Fehler aufgetreten. Bitte versuche es erneut.');
     }
-    
-    document.getElementById('postForm').addEventListener('submit', function(event) {
-        event.preventDefault();
-        createPost();
-    });
+});
