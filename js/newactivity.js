@@ -1,45 +1,49 @@
 import { supa } from "/js/supabase.js";
 
-
 document.getElementById('newactivity').addEventListener('click', async () => {
     const adresse = document.getElementById('adresse').value;
     const placedescription = document.getElementById('placedescription').value;
     const kindofactivity = document.getElementById('kindofactivity').value;
     const needhelp = document.getElementById('needhelp').value;
     const kindofknowledge = document.getElementById('kindofknowledge').value;
-    const photoInput = document.getElementById('photo');
-    
+    const photo = document.getElementById('photo').files[0];
 
-        try {
-            // Daten in die Supabase-Datenbank einfügen
-            const { data, error } = await supa
-                .from('post')
-                .insert([
-                    { adresse, placedescription, kindofactivity, needhelp, kindofknowledge },
-                ]);
-
-            if (error) {
-                throw error;
-            }
-
-        // Foto hochladen
-        const { data: fileData, error: fileError } = await supa
-            .storage
-            .from('profilpic') // Ersetze 'dein_bucket_name' durch den Namen deines Buckets
-            .upload(`public/${photoFile.name}`, photoFile);
-
-        if (fileError) {
-            throw fileError;
-        }
-    
-
-        console.log('Daten erfolgreich in Supabase eingefügt:', data);
-        console.log('Foto erfolgreich hochgeladen:', fileData);
-    } catch (error) {
-        console.error('Fehler beim Einfügen der Daten:', error);
-
-    } else {
-        console.error('Es wurde kein Foto ausgewählt.');
+    if (!adresse || !placedescription || !kindofactivity || !needhelp || !kindofknowledge || !photo) {
+        alert('Bitte fülle alle Felder aus und lade ein Foto hoch.');
+        return;
     }
+
+    try {
+        // Hochladen des Fotos
+        const { data, error } = await supa.storage.from('avatars').upload(`bilder/${photo.name}`, photo);
+
+        if (error) {
+            throw error;
+        }
+
+        const imageUrl = data.Key;
+
+        // Speichern der Daten in der Tabelle "post"
+        const { data: postData, error: postError } = await supa
+            .from('post')
+            .insert([
+                {
+                    adresse,
+                    placedescription,
+                    kindofactivity,
+                    needhelp,
+                    kindofknowledge,
+                    photo_url: imageUrl, // Speichern der URL des hochgeladenen Fotos
+                },
+            ]);
+
+        if (postError) {
+            throw postError;
+        }
+
+        alert('Aktivität erfolgreich erstellt!');
+    } catch (error) {
+        console.error('Error:', error.message);
+        alert('Es ist ein Fehler aufgetreten. Bitte versuche es erneut.');
     }
 });
