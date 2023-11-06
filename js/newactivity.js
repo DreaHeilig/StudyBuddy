@@ -27,8 +27,7 @@ document.getElementById('newactivity').addEventListener('click', async () => {
         const { data: postData, error: postError } = await supa
             .from('post')
             .insert([
-                {
-                    adresse,
+                {   adresse,
                     placedescription,
                     kindofactivity,
                     needhelp,
@@ -42,7 +41,8 @@ document.getElementById('newactivity').addEventListener('click', async () => {
         }
 
         // Erfolgreich erstellt, zur bestaetigungs.html Seite wechseln
-        window.location.href = 'bestaetigung.html';
+        window.location.href = `bestaetigung.html?username=${adresse}&placedescription=${placedescription}&kindofactivity=${kindofactivity}&needhelp=${needhelp}&kindofknowledge=${kindofknowledge}`;
+
     } catch (error) {
         console.error('Error:', error.message);
         alert('Es ist ein Fehler aufgetreten. Bitte versuche es erneut.');
