@@ -9,8 +9,8 @@ body {
   }
   
  main {
-    width: 390px;
-    height: 767px;
+    width: 18vw;
+    height: 80vh;
     margin: auto;
     background-color: var(--white-background);
     display: flex;
@@ -22,15 +22,19 @@ body {
     display: none;
 }
 
+#logo {
+  width: 100rem
+}
+
 #logoScreen {
     text-align: center;
-    padding: 50px;
+    /* padding: 50px; */
     border-radius: 30px;
     background: #F46524;
     display: flex;
-    width: 80%;
+    width: 18vw;
     max-width: 40vh;
-    height: 90vh;
+    height: 80vh;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -63,8 +67,8 @@ body {
     border: none;
     padding: 0;
     cursor: pointer;
-    margin-left: 8rem;
-    margin-top: 5rem;
+    margin-left: 13rem;
+    margin-top: 10rem;
 }
 
 #weiterTaste svg {
@@ -75,6 +79,11 @@ body {
 
 #weiterTaste:focus {
     outline: none;
+}
+
+#logoKlein {
+  width: 10rem;
+  margin-left: 18rem;
 }
 
 /* css --------------login-page---------------------*/
@@ -337,7 +346,7 @@ a:link {
   .footer {
     display: flex;
     justify-content: space-between;
-    width: 390px;
+    width: 18vw;
     height: 77px;
     align-items: center;
     margin: auto;
@@ -380,4 +389,88 @@ a:link {
   justify-content: center;
   align-items: center;
   margin-bottom: 2rem;
+}
+
+/* css --------------match-found--------------------- */
+
+.blackTitle {
+  color: #000;
+  text-align: center;
+  font-family: DM Sans, Arial, sans-serif; 
+  font-size: 1.4rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 94.7%; /* 22.728px */
+}
+
+#congratulations {
+  flex-direction: column;
+  justify-content: flex-start;
+  height: 80%;
+  margin: 1rem 2rem;
+}
+
+#congratsTitleContainer, .congratsTextContainer {
+  margin-left: 2rem;
+  margin-right: 2rem;
+}
+
+#congratsTitleContainer {
+  margin-top: 3rem;
+}
+
+#congratsTitle {
+  color: #000;
+  font-size: 2rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 94.7%;
+  text-align: center;
+}
+
+.congratsText {
+  color: #000;
+  text-align: center;
+  font-size: 1.1rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 94.7%; /* 18.94px */
+}
+
+#confirmMatch {
+margin-top: 6rem;
+}
+
+/* css --------------notifications--------------------- */
+
+#notifContainerAll {
+display: flex;
+flex-direction: column;
+justify-content: center;
+width: 80%;
+margin: 4rem auto;
+gap: 1rem;
+}
+
+.notifContainer {
+display: flex;
+flex-direction: row;
+align-items: center;
+gap: 1rem;
+border-radius: 0.5rem;
+background: #F6B26B;
+padding: 0.3rem 1rem;
+}
+
+.congratsText {
+color: #000;
+text-align: start;
+font-size: 1.1rem;
+font-style: normal;
+font-weight: 500;
+line-height: 94.7%; /* 18.94px */
+}
+
+.notifButton {
+width: 2.2rem;
 }
