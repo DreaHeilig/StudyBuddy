@@ -41,7 +41,8 @@ document.getElementById('newactivity').addEventListener('click', async () => {
             throw postError;
         }
 
-        alert('Aktivität erfolgreich erstellt!');
+        // Erfolgreich erstellt, zur bestaetigungs.html Seite wechseln
+        window.location.href = 'bestaetigung.html';
     } catch (error) {
         console.error('Error:', error.message);
         alert('Es ist ein Fehler aufgetreten. Bitte versuche es erneut.');
