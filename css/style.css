@@ -11,6 +11,7 @@ body {
  main {
     width: 18vw;
     height: 80vh;
+    min-width: 320px;
     margin: auto;
     background-color: var(--white-background);
     display: flex;
