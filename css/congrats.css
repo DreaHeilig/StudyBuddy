@@ -404,3 +404,41 @@ a:link {
     font-weight: 500;
     line-height: 94.7%; /* 18.94px */
 }
+
+#confirmMatch {
+  margin-top: 6rem;
+}
+
+/* css --------------notifications--------------------- */
+
+#notifContainerAll {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 80%;
+  margin: 4rem auto;
+  gap: 1rem;
+}
+
+.notifContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem;
+  border-radius: 0.5rem;
+  background: #F6B26B;
+  padding: 0.3rem 1rem;
+}
+
+.congratsText {
+  color: #000;
+  text-align: start;
+  font-size: 1.1rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 94.7%; /* 18.94px */
+}
+
+.notifButton {
+  width: 2.2rem;
+}
