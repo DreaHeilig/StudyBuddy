@@ -49,6 +49,8 @@ margin: 1rem auto 2.5rem auto;
     border-radius: 20px;
     background: #FFF;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    height: 38vh; /*höhe der Box für Antworten*/
+    overflow: scroll; overflow-x: hidden; /*scrollfunktion eingeführt*/
   }
   
 #infoBoxcontainer {
@@ -56,11 +58,25 @@ margin: 1rem auto 2.5rem auto;
     justify-content: center;
     align-items: center;
     margin-bottom: 10rem;
+    
+  
   }
 
   h1 {
     text-align: center;
     font-size: 24px;
-    margin-top: 70px ;
+    margin-top: 0;
 }
 
+#header {
+  display:flex;
+  justify-content: center;
+  margin-top: 70px;
+}
+
+.backarrow {
+  height: 25px;
+}
+.infotext {
+  font-size: 0.8rem;
+}
