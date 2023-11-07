@@ -32,13 +32,13 @@ footer {
     align-items: center;
 }
 
-#locationing {
+#locationimg {
 width: 30vh;
-margin: 3rem auto 5rem auto; 
+margin: 1rem auto 2.5rem auto; 
 }
 
 #infoBoxbestaetigung {
-    display: flex;
+    /* display: flex;none---cmd-shift-7 */
     flex-direction: column;
     width: 200px;
     padding: 10px 30px;
