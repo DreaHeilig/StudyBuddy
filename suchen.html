@@ -4,35 +4,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Suchen</title>
-    <link rel="stylesheet" href="/css/suchen.css">
+    <link rel="stylesheet" href="/css/style.css">
     <script src="https://unpkg.com/@supabase/supabase-js@2"> </script>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@1.29.0/dist/umd/supabase.min.js"></script>
 </head>
 <body>
     <main>  
-        <h1>Finde dein Buddy!</h1>
-        <section>       
-<!-- Dropdown Menu -->
-            <select class="dropdown-city">
-                <option value="option1">Stadt auswählen</option>
-                <option value="option2">Bern</option>
-                <option value="option3">Zürich</option>
-                <option value="option5">Genf</option>
-            </select>
-
-    <!-- Button 1 (Rundförmig) -->
-            <button class="rounded-button"><img src="img/go.svg" alt="weiter"></button>
-        </section>
+<!-- Button 1 (Rundförmig) -->   
+        <div id="elementesuchen">
+            <div id="findebuddy">
+                <h2>Finde dein Buddy!</h2>
+                <button class="center-button" ><img src="img/go.svg" alt="weiter"></button>
+            </div>
         
 <!-- Button 2 -->
-        <button id="center-button" class="rounded-button" onclick="window.location.href = 'newactivity.html';"><img src="img/plus.svg" alt="hinzufügen"></button>
-
+            <div id="plusaktivity">
+                <h2>Aktivität erstellen:</h2>
+                <button id="center-button" class="rounded-button" onclick="window.location.href = 'newactivity.html';"><img src="img/plus.svg" alt="hinzufügen"></button>
+            </div>
+        </div>
     </main>
     
-    <footer>
-        <a href="/suchen.html"><img src="img/home.svg" alt="home"></a>
-        <a href="/menu.html"><img src="img/hamburger.svg" alt="menü"></a>
-    </footer>
+<footer  class="footer">
+    <a href="/suchen.html"><img src="img/home.svg" alt="home"></a>
+    <a href="/menu.html"><img src="img/hamburger.svg" alt="menü"></a>
+</footer>
 
 
     <script type="module" src="js/supabase.js"></script>

@@ -18,6 +18,26 @@ body {
     flex-direction: column;
   }
 
+  h1 {
+    color: var(--orange-strong);
+    font-size: 2rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    text-align: center;
+    margin-top: 4rem;
+  }
+
+  h2 {
+    color: #000;
+    font-size: 1.2rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    text-align: center;
+    margin-top: 4rem;
+  }
+
 /* css --------------home-page---------------------*/
 .hidden {
     display: none;
@@ -97,15 +117,7 @@ body {
     margin-top: 3rem;
   }
   
-  h1 {
-    color: var(--orange-strong);
-    font-size: 2rem;
-    font-style: normal;
-    font-weight: 700;
-    line-height: normal;
-    text-align: center;
-    margin-top: 4rem;
-  }
+
   
   .textInputTitle {
     color: #000;
@@ -274,10 +286,7 @@ body {
 }
   /* css --------------new activity-page---------------------*/
 
-button.rounded-button {
-  background: #F9F9F9;
   
-}
 
 .textInputContainernewactivity {
   margin-bottom: 1rem;
@@ -344,7 +353,7 @@ a:link {
 }
 
 /* css --------------footer---------------------*/
-  .footer {
+footer {
     display: flex;
     justify-content: space-between;
     width: 18vw;
@@ -475,3 +484,40 @@ line-height: 94.7%; /* 18.94px */
 .notifButton {
 width: 2.2rem;
 }
+
+/* css --------------suchen--------------------- */
+    
+.rounded-button {
+      width: 38px;
+      height: 38px;
+      border-radius: 100%;
+      padding: 0;
+      border: none;
+
+
+  }
+button.center-button{
+      background: #F9F9F9;
+      display: flex;
+      justify-content: center;
+      align-items: center
+  }
+  
+.rounded-button img {
+      width: 100%;
+  }
+  
+#center-button {
+      width: 60px;
+      height: 60px;
+      left: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+  }
+  #elementesuchen{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }

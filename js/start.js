@@ -85,7 +85,7 @@ updateUserStatus(initialUser);
 
 // js ------------------------account-js----------------------------//
 
-/*console.log("Hello World!");
+console.log("Hello World!");
 
 document.addEventListener("DOMContentLoaded", function () {
     const usernameElement = document.getElementById("userInfoName");
