@@ -10,19 +10,18 @@
 </head>
 <body>
     <main>  
-        <h1>Übersicht</h1>
         <div id="infoContainer">
-            <a href="activities.html"><div class="box" id="activities">
-                <h2>Meine Aktivitäten</h2></a>
+        <h2>Aktuelle Aktivität</h2>
+            <div id="infoContainerCurrent">
+            <!--hier Supabase Daten einfügen der von dem User slebst erstellten Daten-->
             </div>
-            <a href=""><div class="box" id="notifications">
-                <h2>Benachrichtigungen</h2></a>
+        </div>
+        <div id="infoContainer">
+        <h2>Teilgenommen</h2>
+            <div id="infoContainerParticipated">
+            <!--hier Supabase Daten einfügen von teilgenommenen Aktivitäten-->
             </div>
-            <a href="account.html"><div class="box" id="account">
-                <h2>Mein Konto</h2></a>
-            </div>
-            <button id="logoutButton">Logout</button>
-            </div>
+        </div>
     </main>
     
     <footer class="footer">
@@ -35,7 +34,6 @@
     <script type="module" src="js/supabase.js"></script>
     <script type="module" src="js/supabase_api.js"></script>
     <script type="module" src="js/start.js"></script>
-    <script type="module" src="js/menu.js"></script>
-
+    <script type="module" src="js/activities.js"></script>
 </body>
 </html>

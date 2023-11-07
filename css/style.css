@@ -331,25 +331,26 @@ body {
 }
 
   /* css --------------menu-page---------------------*/
-.box {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 5rem;
-  flex-shrink: 0;
-  border-radius: 0.5rem;
-  background: #F6B26B;
-  margin-bottom: 1rem;
-
-}
-.box h2 {
-  color: #000;
-  font-size: 20px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 94.7%;
-  justify-content: center;
-}
+  .box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 4rem;
+    flex-shrink: 0;
+    border-radius: 0.5rem;
+    background: #F6B26B;
+    margin-bottom: 1rem;
+    text-align: center; /* Zentriere den Text innerhalb der Box */
+  }
+  
+  .box h2 {
+    color: #000;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    margin: 0; /* Entferne den Standardmargen von h2 */
+    max-width: 100%; /* Lass den Text nicht breiter als die Box werden */
+  }
 
 #logout {
   border-radius: 0.5rem;
