@@ -7,19 +7,14 @@ async function loginUser(event) {
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
 
-    const { data, error } = await supa
-        .from('user')
-        .select('*')
-        .eq('email', email)
-        .eq('password', password)
-        .single();
+    const { user, error } = await supa.auth.signIn({ email, password });
 
     if (error) {
         console.error("Error during login: ", error.message);
         return;
     }
 
-    if (data) {
+    if (user) {
         console.log("Login successful");
         window.location.href = "suchen.html";
     } else {

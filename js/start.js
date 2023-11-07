@@ -36,35 +36,40 @@ async function signUp() {
 }
 
 
-
+if(document.getElementById('registrationForm')) {
 document.getElementById('registrationForm').addEventListener('submit', function(event) {
     event.preventDefault();
     signUp();
 });
+}
 
   
-// Check and display the initial user status
-const initialUser = supa.auth.user();
-updateUserStatus(initialUser);
 
+/*
 // Event listeners for the buttons
+if(document.getElementById('loginConfirm')) {
 document.getElementById('loginConfirm').addEventListener('click', login);
 document.getElementById('registrationConfirm').addEventListener('click', () => {
   console.log('gggg');
 });
-
+}
+*/
   
 
   // Function to update user status
   function updateUserStatus(user) {
-    const userStatusElement = document.getElementById('userStatus');
   
     if (user) {
-        userStatusElement.textContent = `Authenticated as: ${user.email}`;
+        console.log(`Authenticated as: ${user.email}`)
     } else {
-        userStatusElement.textContent = "Not authenticated.";
+        console.log("Not authenticated.");
     }
   }
+
+
+// Check and display the initial user status
+const initialUser = supa.auth.user();
+updateUserStatus(initialUser);
 
   // Listener for authentication state changes
   supa.auth.onAuthStateChange((event, session) => {
@@ -77,23 +82,10 @@ document.getElementById('registrationConfirm').addEventListener('click', () => {
     }
   });
   
-  // Logout logic
-  async function logout() {
-    const { error } = await supa.auth.signOut();
-    if (error) {
-        console.error("Error during logout:", error);
-    } else {
-        updateUserStatus(null);
-        console.log("User logged out successfully.");
-    }
-  }
-  
-  document.getElementById('logoutButton').addEventListener('click', logout);
-
 
 // js ------------------------account-js----------------------------//
 
-console.log("Hello World!");
+/*console.log("Hello World!");
 
 document.addEventListener("DOMContentLoaded", function () {
     const usernameElement = document.getElementById("userInfoName");
