@@ -41,10 +41,14 @@ document.getElementById('newactivity').addEventListener('click', async () => {
         }
 
         // Erfolgreich erstellt, zur bestaetigungs.html Seite wechseln
-        window.location.href = `bestaetigung.html?username=${adresse}&placedescription=${placedescription}&kindofactivity=${kindofactivity}&needhelp=${needhelp}&kindofknowledge=${kindofknowledge}`;
+        document.getElementById('confirmationIcon').style.display = 'block'; // Zeige das Bestätigungssymbol
+
+        setTimeout(() => {
+            window.location.href = `menu.html?username=${adresse}&placedescription=${placedescription}&kindofactivity=${kindofactivity}&needhelp=${needhelp}&kindofknowledge=${kindofknowledge}`;
+        }, 3000); // Warte 3 Sekunden, bevor zur menu.html Seite wechseln
 
     } catch (error) {
         console.error('Error:', error.message);
-        alert('Es ist ein Fehler aufgetreten. Bitte versuche es erneut.');
+        alert('Es ist ein Fehler aufgetreten. Bitte versuche es erneut.')
     }
 });
