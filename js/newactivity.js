@@ -1,5 +1,37 @@
 import { supa } from "/js/supabase.js";
 
+
+
+async function getUserInfo() {
+    const user = supa.auth.user();
+  
+    if (user) {
+      // Use the authenticated user's ID to query the database for their information
+      const { data, error } = await supa
+        .from('user') // Assuming 'user' is the table name
+        .select('email') // You can select the columns you need
+        .eq('user_id', user.id) // Match the user_id to the authenticated user's ID
+        .single(); // This assumes there's only one matching user; adjust as needed
+  
+      if (error) {
+        console.error("Error fetching user information: ", error.message);
+      } else {
+        if (data) {
+          const username = data.username;
+          const email = data.email;
+          console.log("Username: ", username);
+          console.log("Email: ", email);
+        } else {
+          console.log("User not found.");
+        }
+      }
+    } else {
+      console.log("Not authenticated.");
+    }
+  }    
+
+getUserInfo();
+
 document.getElementById('newactivity').addEventListener('click', async () => {
     const adresse = document.getElementById('adresse').value;
     const placedescription = document.getElementById('placedescription').value;
@@ -22,6 +54,8 @@ document.getElementById('newactivity').addEventListener('click', async () => {
         }
 
         const imageUrl = data.Key;
+        const username = data.username;
+        const email = data.email;
 
         // Speichern der Daten in der Tabelle "post"
         const { data: postData, error: postError } = await supa
@@ -33,6 +67,8 @@ document.getElementById('newactivity').addEventListener('click', async () => {
                     needhelp,
                     kindofknowledge,
                     photo_url: imageUrl, // Speichern der URL des hochgeladenen Fotos
+                    activepost: true,
+                    email_id: email,
                 },
             ]);
 
