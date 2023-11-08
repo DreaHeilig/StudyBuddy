@@ -17,10 +17,9 @@ async function getUserInfo() {
         console.error("Error fetching user information: ", error.message);
       } else {
         if (data) {
-          const username = data.username;
           const email = data.email;
-          console.log("Username: ", username);
           console.log("Email: ", email);
+          return email;
         } else {
           console.log("User not found.");
         }
@@ -48,14 +47,13 @@ document.getElementById('newactivity').addEventListener('click', async () => {
     try {
         // Hochladen des Fotos
         const { data, error } = await supa.storage.from('avatars').upload(`bilder/${photo.name}`, photo);
+        const email = await getUserInfo();
 
         if (error) {
             throw error;
         }
 
         const imageUrl = data.Key;
-        const username = data.username;
-        const email = data.email;
 
         // Speichern der Daten in der Tabelle "post"
         const { data: postData, error: postError } = await supa
