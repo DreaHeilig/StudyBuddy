@@ -284,6 +284,21 @@ body {
     margin-block: auto;
     margin-left: 25px;
 }
+
+#infoContainerEmail {
+    display: flex;
+    align-items: center;
+}
+
+#userInfoEmail {
+    color: #000;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin-block: auto;
+    margin-left: 25px;
+}
   /* css --------------new activity-page---------------------*/
 
   

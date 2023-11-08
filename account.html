@@ -16,10 +16,11 @@
         <div id="infoContainer">
             <div>
                 <p class="textInputTitle">Name</p>
-                <div class="userInfoField">
+                <div class="userInfoField" id="userInfoNameContainer">
                     <p>
                         <span id="userInfoName" class="textInput">
-
+                            <span id="userInfoNameStaticText"></span>
+                            <input type="text" id="editUserNameInput" style="display: none" />
                         </span>
                     </p>
                     <button id="editName">Edit</button>
@@ -28,8 +29,10 @@
             <p class="textInputTitle">E-Mail</p>
             <div class="textInputContainer">
                 <!-- <input type="email" id="email" class="textInput" placeholder="Deine E-Mail Adresse" required> -->
-                <div class="infoContainerEmail">
+                <div id="infoContainerEmail">
+                    <p id="userInfoEmail" class="textInput">
 
+                    </p>
                 </div>
             </div>
             <p class="textInputTitle">Aktivitäten erstellt:</p>
