@@ -1,35 +1,37 @@
 import { supa } from "/js/supabase.js";
 
-document.addEventListener('DOMContentLoaded', async function() {
-    const user = supa.auth.user();
+async function getUserInfo() {
+  const user = supa.auth.user();
 
-    if (user) {
-        const { data: myPostsData, error: myPostsError } = await supa
-            .from('post')
-            .select('adresse, kindofactivity')
-            .eq('user_id', user.id);
+  if (user) {
+    // Verwende die authentifizierte Benutzer-ID, um die Datenbank nach Informationen zu durchsuchen
+    const { data, error } = await supa
+      .from('user')
+      .select('email')
+      .eq('email', user.email)
+      .single();
 
-        if (myPostsError) {
-            console.error('Fehler beim Abrufen der eigenen Posts:', myPostsError.message);
-            return;
+    if (error) {
+      console.error("Fehler beim Abrufen der Benutzerinformationen: ", error.message);
+    } else {
+      if (data) {
+        const email = data.email;
+        console.log("E-Mail: ", email);
+
+        // Aktualisiere das HTML-Element mit dem abgerufenen Benutzernamen
+        const userInfoNameElement = document.getElementById('infoContainerCurrent');
+        if (userInfoNameElement) {
+          userInfoNameElement.textContent = email;
+        } else {
+          console.log("Element mit der ID 'infoContainerCurrent' nicht gefunden.");
         }
-
-        const myPostsContainer = document.getElementById('infoContainerCurrent');
-
-        myPostsData.forEach(post => {
-            const postBox = document.createElement('div');
-            postBox.classList.add('postBox');
-
-            const adresseElement = document.createElement('p');
-            adresseElement.textContent = `Adresse: ${post.adresse}`;
-
-            const kindofactivityElement = document.createElement('p');
-            kindofactivityElement.textContent = `Art der Aktivität: ${post.kindofactivity}`;
-
-            postBox.appendChild(adresseElement);
-            postBox.appendChild(kindofactivityElement);
-
-            myPostsContainer.appendChild(postBox);
-        });
+      } else {
+        console.log("Benutzer nicht gefunden.");
+      }
     }
-});
+  } else {
+    console.log("Nicht authentifiziert.");
+  }
+}
+
+getUserInfo();
