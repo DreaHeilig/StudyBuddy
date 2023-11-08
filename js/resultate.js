@@ -4,8 +4,11 @@ let currentPostIndex = 0; // Initialize the index of the currently displayed pos
 
 async function fetchAndDisplayPost(index) {
   try {
-    // Fetch posts and sort by "created_at" in ascending order
-    const { data, error } = await supa.from('post').select('photo_url').order('created_at', { ascending: true });
+    // Fetch posts and select the desired columns
+    const { data, error } = await supa
+      .from('post')
+      .select('photo_url, email_id, placedescription, kindofactivity, needhelp, kindofknowledge')
+      .order('created_at', { ascending: true });
 
     if (error) {
       throw error;
@@ -15,15 +18,25 @@ async function fetchAndDisplayPost(index) {
     if (data && data.length > 0) {
       const post = data[index];
       if (post) {
-        const photoUrl = post.photo_url;
+        // Extract the values from the post object
+        const {
+          photo_url,
+          email_id,
+          placedescription,
+          kindofactivity,
+          needhelp,
+          kindofknowledge,
+        } = post;
 
         // Get the public URL for the image using Supabase storage
         const bucketName = 'avatars';
         const folderName = 'bilder';
 
-        const cleanPhotoUrl = photoUrl.replace('avatars/bilder/', '');
+        const cleanPhotoUrl = photo_url.replace('avatars/bilder/', '');
 
-        const { publicURL, urlError } = await supa.storage.from(bucketName).getPublicUrl(`${folderName}/${cleanPhotoUrl}`);
+        const { publicURL, urlError } = await supa.storage.from(bucketName).getPublicUrl(
+          `${folderName}/${cleanPhotoUrl}`
+        );
 
         if (urlError) {
           throw urlError;
@@ -38,6 +51,13 @@ async function fetchAndDisplayPost(index) {
         const postContainer = document.getElementById('postContainer');
         postContainer.innerHTML = ''; // Clear the previous content
         postContainer.appendChild(imgElement);
+
+        // Update the span elements with the fetched values
+        document.getElementById('username').textContent = email_id;
+        document.getElementById('placedescription').textContent = placedescription;
+        document.getElementById('kindofactivity').textContent = kindofactivity;
+        document.getElementById('needhelp').textContent = needhelp;
+        document.getElementById('kindofknowledge').textContent = kindofknowledge;
       } else {
         // Handle case when there are no more posts
         console.log('No more posts to display');
@@ -50,6 +70,7 @@ async function fetchAndDisplayPost(index) {
     console.error('Error fetching and displaying the post:', error);
   }
 }
+
 
 // Call the function to fetch and display the initial post
 fetchAndDisplayPost(currentPostIndex);

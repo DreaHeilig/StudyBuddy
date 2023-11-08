@@ -35,12 +35,15 @@ footer {
 #postContainer {
     margin: 1rem auto;
     border-radius: 1rem;
+    max-height: 12rem;
+    overflow: hidden;
 }
 
 #locationimg {
     width: 30vh;
-    margin: 1rem auto 0 auto; 
+    margin: 0 auto 0 auto; 
     border-radius: 1rem;
+    object-fit: cover;
 }
 
 footer img {
@@ -109,5 +112,17 @@ section {
 
   .infotext {
     font-size: 0.8rem;
+    color: rgba(0, 0, 0, 0.60);
+    font-style: italic;
+  }
+
+  .descriptorText {
+    font-size: 1rem;
+    font-weight: bold;
+  }
+
+  .descriptorText span {
+    font-weight: normal;
+    font-size: 1rem;
   }
   
