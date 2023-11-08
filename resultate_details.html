@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Resultate</title>
+    <title>Details</title>
     <link rel="stylesheet" href="/css/resultate_details.css">
-    <script src="js/resultate_details.js"></script>
     <script src="https://unpkg.com/@supabase/supabase-js@2"> </script>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@1.29.0/dist/umd/supabase.min.js"></script>
 </head>
@@ -17,7 +16,10 @@
     </a>
         <h1>Resultate</h1>
     </div>
-        <img id="locationimg" src="img/bibliothek.png" alt="bibliothek">
+
+        <div id="locationImgContainer">
+            <img id="locationimg" src="img/bibliothek.png" alt="bibliothek">
+        </div>
 
         <div id="infoBoxcontainer">
             <div id="infoBoxbestaetigung">
@@ -27,7 +29,7 @@
                     <p>Wo: <span id="placedescription"></span></p>
                     <p>Arbeitet an: <span id="kindofactivity"></span></p>
                     <p>Hilfe benötigt: <span id="needhelp"></span></p>
-                    <p>Kenntnisse notwendig: <span id="kindofknowledge"></span>Ich brauche Hilfe für Jacvascriptprogrammierungen <br> beoooooo</p>
+                    <p>Kenntnisse notwendig: <span id="kindofknowledge"></span>
                     <p class="infotext">Swipe rechts, um dich als StudyBuddy zu bewerben. Sobald deine Anfrage bestätigt wird erhältst du die genaue Adresse, um teilzunehmen.</p>
                 </div>
             </div>
@@ -43,7 +45,7 @@
 
     <script type="module" src="js/supabase.js"></script>
     <script type="module" src="js/supabase_api.js"></script>
-    <script type="module" src="js/resultate_details.js"></script>
+    <script type="module" src="js/resultate.js"></script>
     <script type="module" src="js/start.js"></script>
 
 </body>
