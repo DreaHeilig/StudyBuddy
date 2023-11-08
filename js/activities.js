@@ -1,45 +1,35 @@
 import { supa } from "/js/supabase.js";
 
-async function fetchPosts() {
-    try {
-        const { data, error } = await supa.from('post').select('placedescription,username');
+document.addEventListener('DOMContentLoaded', async function() {
+    const user = supa.auth.user();
 
-        if (error) {
-            throw error;
+    if (user) {
+        const { data: myPostsData, error: myPostsError } = await supa
+            .from('post')
+            .select('adresse, kindofactivity')
+            .eq('user_id', user.id);
+
+        if (myPostsError) {
+            console.error('Fehler beim Abrufen der eigenen Posts:', myPostsError.message);
+            return;
         }
 
-        return data;
-    } catch (error) {
-        console.error('Fehler beim Abrufen der Daten:', error.message);
-        return [];
+        const myPostsContainer = document.getElementById('infoContainerCurrent');
+
+        myPostsData.forEach(post => {
+            const postBox = document.createElement('div');
+            postBox.classList.add('postBox');
+
+            const adresseElement = document.createElement('p');
+            adresseElement.textContent = `Adresse: ${post.adresse}`;
+
+            const kindofactivityElement = document.createElement('p');
+            kindofactivityElement.textContent = `Art der Aktivität: ${post.kindofactivity}`;
+
+            postBox.appendChild(adresseElement);
+            postBox.appendChild(kindofactivityElement);
+
+            myPostsContainer.appendChild(postBox);
+        });
     }
-}
-
-async function insertPostsIntoElement(containerId) {
-    const container = document.getElementById(containerId);
-    container.innerHTML = '';
-
-    const posts = await fetchPosts();
-
-    if (posts.length === 0) {
-        container.innerHTML = '<p>Keine Daten gefunden.</p>';
-        return;
-    }
-
-    posts.forEach(post => {
-        const postElement = document.createElement('div');
-        postElement.classList.add('post'); // Du kannst diese Klasse in deinem CSS definieren
-
-        postElement.innerHTML = `
-            <p>Placedescription: ${post.placedescription}</p>
-            <p>Username: ${user.username}</p>
-        `;
-
-        container.appendChild(postElement);
-    });
-}
-
-// Jetzt kannst du die Funktion aufrufen, um die Posts in den entsprechenden Abschnitt einzufügen.
-
-// Aktuelle Aktivität
-insertPostsIntoElement('infoContainer');
+});
