@@ -39,8 +39,8 @@ async function fetchRequests() {
         const { data, error } = await supa
             .from('request')
             .select('id, user_email')
-            .eq('post_email', formattedUserEmail);
-
+            .eq('post_email', formattedUserEmail)
+            .is('accept', null);
         if (error) {
             console.error("Error fetching requests: ", error.message);
         } else {
@@ -49,6 +49,7 @@ async function fetchRequests() {
                     const id = request.id;
                     const user_email = request.user_email;
                     appendNotification(id, user_email);
+                    return id;
                 });
             } else {
                 console.log("No matching requests found.");
@@ -56,6 +57,8 @@ async function fetchRequests() {
         }
     }
 }
+
+fetchRequests();
 
 function appendNotification(id, user_email) {
     const notifContainerAll = document.getElementById("notifContainerAll");
@@ -68,7 +71,7 @@ function appendNotification(id, user_email) {
     notifText.textContent = user_email + " möchte dein StudyBuddy sein!";
     
     const acceptButton = document.createElement("button");
-    acceptButton.id = "acceptButton" + id;
+    acceptButton.className = "acceptButton";
     const acceptButtonImg = document.createElement("img");
     acceptButtonImg.className = "notifButton";
     acceptButtonImg.src = "img/checkmark.svg";
@@ -76,7 +79,7 @@ function appendNotification(id, user_email) {
     acceptButton.appendChild(acceptButtonImg);
 
     const declineButton = document.createElement("button");
-    declineButton.id = "declineButton" + id;
+    declineButton.className = "declineButton";
     const declineButtonImg = document.createElement("img");
     declineButtonImg.className = "notifButton";
     declineButtonImg.src = "img/Cross.svg";
@@ -88,6 +91,38 @@ function appendNotification(id, user_email) {
     notifContainer.appendChild(declineButton);
 
     notifContainerAll.appendChild(notifContainer);
+
+    // Add event listener to the declineButton
+    declineButton.addEventListener('click', async function() {
+        const idString = id.toString(); // Convert id to a string
+        const lastCharacter = idString.slice(-1); // Get the last character of the id
+        const lastInteger = parseInt(lastCharacter); // Convert it to an integer
+
+        // Update the request table and then remove the notification
+        await updateRequest(lastInteger);
+        notifContainerAll.removeChild(notifContainer); // Remove the parent notifContainer div
+    });
 }
 
-fetchRequests();
+async function updateRequest(id) {
+    try {
+        const { data, error } = await supa
+            .from('request')
+            .select('id')
+            .eq('id', id);
+
+        if (error) {
+            console.error("Error selecting data from the request table: ", error.message);
+        } else {
+            if (data && data.length > 0) {
+                await supa
+                    .from('request')
+                    .update({ accept: false })
+                    .eq('id', id);
+            }
+        }
+    } catch (error) {
+        console.error("Error updating the request table: ", error.message);
+    }
+}
+
