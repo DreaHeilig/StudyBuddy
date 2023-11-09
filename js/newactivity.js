@@ -84,3 +84,34 @@ document.getElementById('newactivity').addEventListener('click', async () => {
         alert('Es ist ein Fehler aufgetreten. Bitte versuche es erneut.')
     }
 });
+
+
+async function updateActivePostStatus() {
+  const twentyFourHoursAgo = new Date();
+  twentyFourHoursAgo.setHours(twentyFourHoursAgo.getHours() - 24);
+
+  const { data, error } = await supa
+      .from('post')
+      .select('*')
+      .eq('activepost', true);
+
+  if (error) {
+      console.error('Fehler beim Abrufen der Posts: ', error.message);
+      return;
+  }
+
+  for (const post of data) {
+      const createdAt = new Date(post.created_at);
+
+      if (createdAt < twentyFourHoursAgo) {
+          // Mehr als 24 Stunden vergangen, setze activepost auf false
+          await supa
+              .from('post')
+              .update({ activepost: false })
+              .eq('id', post.id);
+      }
+  }
+}
+
+// Rufe die Funktion alle 24 Stunden auf
+setInterval(updateActivePostStatus, 24 * 60 * 60 * 1000);

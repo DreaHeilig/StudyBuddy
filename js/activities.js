@@ -1,53 +1,77 @@
 import { supa } from "/js/supabase.js";
 
+function formatTimestampForDatabase(timestamp) {
+    const year = timestamp.getFullYear();
+    const month = String(timestamp.getMonth() + 1).padStart(2, '0');
+    const day = String(timestamp.getDate()).padStart(2, '0');
+    const hours = String(timestamp.getHours()).padStart(2, '0');
+    const minutes = String(timestamp.getMinutes()).padStart(2, '0');
+    const seconds = String(timestamp.getSeconds()).padStart(2, '0');
+
+    const formattedTimestamp = `${year}-${month}-${day}T${hours}:${minutes}:${seconds}.000Z`;
+    return formattedTimestamp;
+}
+
 async function getUserInfo() {
-  const user = supa.auth.user();
+    const user = supa.auth.user();
 
-  if (user) {
-    // Verwende die authentifizierte Benutzer-ID, um die Datenbank nach Informationen zu durchsuchen
-    const { data, error } = await supa
-      .from('user')
-      .select('email')
-      .eq('email', user.email)
-      .single();
+    if (user) {
+        const email = user.email;
 
-    if (error) {
-      console.error("Fehler beim Abrufen der Benutzerinformationen: ", error.message);
-    } else {
-      if (data) {
-        const email = data.email;
-        console.log("E-Mail: ", email);
+        // Abrufen aller erstellten Posts des angemeldeten Users in den letzten 24 Stunden
+        const twentyFourHoursAgo = new Date();
+        twentyFourHoursAgo.setHours(twentyFourHoursAgo.getHours() - 24);
 
-      
-// Jetzt rufen wir die kindofactivity aus der "post" Tabelle ab
-      const { data, error } = await supa
-        .from('post')
-        .select('kindofactivity')
+        const { data: createdPosts, error: createdPostsError } = await supa
+            .from('post')
+            .select('*')
+            .eq('email_id', email)
+            .gte('created_at', twentyFourHoursAgo);
 
-      if (postError) {
-        console.error("Fehler beim Abrufen der kindofactivity: ", postError.message);
-      } else {
-        if (postData) {
-          const kindofactivity = postData[0].kindofactivity;
-          console.log("Art der Aktivität: ", kindofactivity);
+        if (createdPostsError) {
+            console.error('Fehler beim Abrufen der erstellten Posts: ', createdPostsError.message);
         } else {
-          console.log("Keine Aktivität gefunden.");
+            const infoContainerCurrent = document.getElementById('infoContainerCurrent');
+
+            if (infoContainerCurrent) {
+                for (const post of createdPosts) {
+                    const postElement = document.createElement('div');
+                    postElement.textContent = `Aktivität: ${post.kindofactivity}, Adresse: ${post.adresse}`;
+                    infoContainerCurrent.appendChild(postElement);
+                }
+            } else {
+                console.log("Element mit der ID 'infoContainerCurrent' nicht gefunden.");
+            }
         }
-      }
+
+        // Abrufen aller Events, an denen der angemeldete User teilgenommen hat
+        const { data: participatedEvents, error: participatedEventsError } = await supa
+            .from('post')
+            .select('*')
+            .eq('email_id', email);
+
+        if (participatedEventsError) {
+            console.error('Fehler beim Abrufen der teilgenommenen Events: ', participatedEventsError.message);
+        } else {
+            const infoContainerParticipated = document.getElementById('infoContainerParticipated');
+
+            if (infoContainerParticipated) {
+                for (const event of participatedEvents) {
+                    const eventElement = document.createElement('div');
+                    eventElement.textContent = `Event: ${event.eventname}, Ort: ${event.ort}`;
+                    infoContainerParticipated.appendChild(eventElement);
+                }
+            } else {
+                console.log("Element mit der ID 'infoContainerParticipated' nicht gefunden.");
+            }
+        }
     } else {
-      console.log("Benutzer nicht gefunden.");
+        console.log("Nicht authentifiziert.");
     }
-  }
-} else {
-  console.log("Nicht authentifiziert.");
 }
-}
-        // Aktualisiere das HTML-Element mit dem abgerufenen Benutzernamen
-        const userInfoNameElement = document.getElementById('infoContainerCurrent');
-        if (userInfoNameElement) {
-          userInfoNameElement.textContent = email, kindofactivity;
-        } else {
-          console.log("Element mit der ID 'infoContainerCurrent' nicht gefunden.");
-        }
 
 getUserInfo();
+
+const twentyFourHoursAgo = new Date();
+twentyFourHoursAgo.setHours(twentyFourHoursAgo.getHours() - 24);
+const formattedCreatedAt = formatTimestampForDatabase(twentyFourHoursAgo);
