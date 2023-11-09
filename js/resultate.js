@@ -28,6 +28,9 @@ async function fetchAndDisplayPost(index) {
           kindofknowledge,
         } = post;
 
+        const postEmail = post.email_id;
+        console.log('Post Email: ', postEmail);
+
         // Get the public URL for the image using Supabase storage
         const bucketName = 'avatars';
         const folderName = 'bilder';
@@ -58,6 +61,7 @@ async function fetchAndDisplayPost(index) {
         document.getElementById('kindofactivity').textContent = kindofactivity;
         document.getElementById('needhelp').textContent = needhelp;
         document.getElementById('kindofknowledge').textContent = kindofknowledge;
+        return postEmail;
       } else {
         // Handle case when there are no more posts
         console.log('No more posts to display');
@@ -81,3 +85,73 @@ swipeLeftButton.addEventListener('click', () => {
   currentPostIndex++; // Move to the next post
   fetchAndDisplayPost(currentPostIndex);
 });
+
+// Fetch user Email
+
+async function getUserInfo() {
+  const user = supa.auth.user();
+
+  if (user) {
+    // Use the authenticated user's ID to query the database for their information
+    const { data, error } = await supa
+      .from('user') // Assuming 'user' is the table name
+      .select('email') // You can select the columns you need
+      .eq('user_id', user.id) // Match the user_id to the authenticated user's ID
+      .single(); // This assumes there's only one matching user; adjust as needed
+
+    if (error) {
+      console.error("Error fetching user information: ", error.message);
+    } else {
+      if (data) {
+        const userEmail = data.email;
+        console.log("User Email: ", userEmail);
+        return userEmail;
+      } else {
+        console.log("User not found.");
+      }
+    }
+  } else {
+    console.log("Not authenticated.");
+  }
+}
+
+getUserInfo();
+
+// Function to handle the swipeRight button click event
+async function handleSwipeRight() {
+  try {
+    // Get the postEmail and userEmail
+    const postEmail = await fetchAndDisplayPost(currentPostIndex);
+    const userEmail = await getUserInfo();
+
+    if (postEmail && userEmail) {
+      // Insert a new row in the "request" table
+      const { data, error } = await supa
+        .from('request') // Assuming 'request' is the table name
+        .upsert([
+          {
+            post_email: postEmail,
+            user_email: userEmail,
+          },
+        ]);
+
+      if (error) {
+        console.error("Error inserting a new request: ", error.message);
+      } else {
+        console.log("New request inserted successfully!");
+        
+        // Increment the post index to show the next post
+        currentPostIndex++;
+        fetchAndDisplayPost(currentPostIndex);
+      }
+    } else {
+      console.log("postEmail or userEmail is missing.");
+    }
+  } catch (error) {
+    console.error("Error handling swipeRight: ", error);
+  }
+}
+
+// Add a click event listener to the "swipeRight" button
+const swipeRightButton = document.getElementById('swipeRight');
+swipeRightButton.addEventListener('click', handleSwipeRight);
