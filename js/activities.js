@@ -11,6 +11,8 @@ function formatTimestampForDatabase(timestamp) {
     const formattedTimestamp = `${year}-${month}-${day}T${hours}:${minutes}:${seconds}.000Z`;
     return formattedTimestamp;
 }
+const formattedTimestamp = await getUserInfo();
+console.log(formattedTimestamp);
 
 async function getUserInfo() {
     const user = supa.auth.user();
