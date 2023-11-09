@@ -391,29 +391,6 @@ footer {
   margin-right: 5rem;
 }
 
-/* css --------------bestaetigung page---------------------*/
-
-#infoBoxbestaetigung {
-  display: flex;
-  flex-direction: column;
-  width: 292px;
-  padding: 10px 30px;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-  flex-shrink: 0;
-  border-radius: 20px;
-  background: #FFF;
-  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-}
-
-#infoBoxcontainer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 2rem;
-}
-
 /* css --------------match-found--------------------- */
 
 .blackTitle {
@@ -530,6 +507,8 @@ button.center-button{
   margin-top: 2rem;
 }
 
+/* css --------------resultate--------------------- */
+
 #elementesuchen{
   display: flex;
   justify-content: center;
@@ -542,10 +521,12 @@ button.center-button{
   border-radius: 1rem;
   max-height: 12rem;
   overflow: hidden;
+  margin-bottom: 2rem;
 }
 
 #locationimg {
-  width: 30vh;
+  width: 35vh;
+  height: 30vh;
   margin: 0 auto 0 auto; 
   border-radius: 1rem;
   object-fit: cover;
@@ -555,41 +536,16 @@ footer img {
   width: 6vh;
 }
 
-h1 {
-  text-align: center;
-  font-size: 24px;
-  margin-top: 70px ;
-}
-
-section {
-  display:flex;
-  justify-content: space-evenly;
-  margin-top: 2rem;
-}
 
 #button-container {
   position: relative;
 }
 
-.rounded-button {
-  width: 60px;
-  height: 60px;
-  border-radius: 100%;
-  padding: 0;
-  border: none;
-}
-
-.rounded-button img {
-  width: 100%;
-}
-
-/* css --------------resultate--------------------- */
-
 #infoBoxbestaetigung {
   display: flex;
   flex-direction: column;
   width: 80%;
-  padding: 10px 30px;
+  padding: 10px 20px;
   justify-content: center;
   align-items: center;
   gap: 10px;
@@ -597,9 +553,14 @@ section {
   border-radius: 20px;
   background: #FFF;
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-  height: 38vh;
+  height: 30vh;
   overflow: scroll; overflow-x: hidden; 
-  margin: 0 auto;
+}
+
+#infoBoxcontainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .infotext {
@@ -620,8 +581,26 @@ section {
 section {
   display:flex;
   justify-content: space-evenly;
-  margin-top: 2rem;
 }
 
+#swipeRight {
+  position: fixed;
+  top: 35%;
+  left: 65%;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+}
+
+#swipeLeft {
+  position: fixed;
+  top: 35%;
+  left: 35%;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+}
+
+#swipeLeft img, #swipeRight img {
+  max-width: 100%;
+}
 /* css --------------congrats--------------------- */
 
