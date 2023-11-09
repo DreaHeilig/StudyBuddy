@@ -51,40 +51,63 @@ async function getUserInfo() {
                     postElement.appendChild(addressItem);
             
                     infoContainerCurrent.appendChild(postElement);
-                }       
+                }
+       
             } else {
                 console.log("Element mit der ID 'infoContainerCurrent' nicht gefunden.");
             }
         }
-
-        // Abrufen aller Events, an denen der angemeldete User teilgenommen hat
-        const { data: participatedEvents, error: participatedEventsError } = await supa
-            .from('post')
-            .select('*')
-            .eq('email_id', email);
-
-        if (participatedEventsError) {
-            console.error('Fehler beim Abrufen der teilgenommenen Events: ', participatedEventsError.message);
-        } else {
-            const infoContainerParticipated = document.getElementById('infoContainerParticipated');
-
-            if (infoContainerParticipated) {
-                for (const event of participatedEvents) {
-                    const eventElement = document.createElement('div');
-                    eventElement.textContent = `Event: ${event.eventname}, Ort: ${event.ort}`;
-                    infoContainerParticipated.appendChild(eventElement);
-                }
-            } else {
-                console.log("Element mit der ID 'infoContainerParticipated' nicht gefunden.");
-            }
-        }
-    } else {
-        console.log("Nicht authentifiziert.");
     }
 }
+getUserInfo(); 
 
-getUserInfo();
+        // Abrufen aller Events, an denen der angemeldete User teilgenommen hat
 
-const twentyFourHoursAgo = new Date();
-twentyFourHoursAgo.setHours(twentyFourHoursAgo.getHours() - 24);
-const formattedCreatedAt = formatTimestampForDatabase(twentyFourHoursAgo);
+async function getParticipatedActivities() {
+    const user = supa.auth.user();
+    
+    if (user) {
+        const email = user.email;
+        
+        const { data: userParticipations, error: userParticipationsError } = await supa
+            .from('request')
+            .select('post_id')
+            .eq('user_email', email);
+        
+        if (userParticipationsError) {
+            console.error('Fehler beim Abrufen der teilgenommenen Aktivitäten: ', userParticipationsError.message);
+        } else {
+            const postIds = userParticipations.map(participation => participation.post_id);
+        
+            const { data: participatedPosts, error: participatedPostsError } = await supa
+                .from('post')
+                .select('*')
+                .in('id', postIds);
+
+            if (participatedPostsError) {
+                console.error('Fehler beim Abrufen der teilgenommenen Aktivitäten: ', participatedPostsError.message);
+            } else {
+                const infoContainerParticipated = document.getElementById('infoContainerParticipated');
+            
+                if (infoContainerParticipated) {
+                    for (const post of participatedPosts) {
+                        const postElement = document.createElement('ul');
+            
+                        const activityItem = document.createElement('li');
+                        activityItem.textContent = `Aktivität: ${post.kindofactivity}`;
+                        postElement.appendChild(activityItem);
+            
+                        const addressItem = document.createElement('li');
+                        addressItem.textContent = `Adresse: ${post.adresse}`;
+                        postElement.appendChild(addressItem);
+            
+                        infoContainerParticipated.appendChild(postElement);
+                }
+                } else {
+                    console.log("Element mit der ID 'infoContainerParticipated' nicht gefunden.");
+                }
+            }
+        }
+    }   
+}
+getParticipatedActivities(); 
