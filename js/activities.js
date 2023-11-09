@@ -1,19 +1,16 @@
 import { supa } from "/js/supabase.js";
 
-function formatTimestampForDatabase(timestamp) {
-    const year = timestamp.getFullYear();
-    const month = String(timestamp.getMonth() + 1).padStart(2, '0');
-    const day = String(timestamp.getDate()).padStart(2, '0');
-    const hours = String(timestamp.getHours()).padStart(2, '0');
-    const minutes = String(timestamp.getMinutes()).padStart(2, '0');
-    const seconds = String(timestamp.getSeconds()).padStart(2, '0');
+function formatTimestampForDatabase(created_at) {
+    const year = created_at.getFullYear();
+    const month = String(created_at.getMonth() + 1).padStart(2, '0');
+    const day = String(created_at.getDate()).padStart(2, '0');
+    const hours = String(created_at.getHours()).padStart(2, '0');
+    const minutes = String(created_at.getMinutes()).padStart(2, '0');
+    const seconds = String(created_at.getSeconds()).padStart(2, '0');
 
     const formattedTimestamp = `${year}-${month}-${day}T${hours}:${minutes}:${seconds}.000Z`;
     return formattedTimestamp;
 }
-const formattedTimestamp = await getUserInfo();
-console.log()
-
 async function getUserInfo() {
     const user = supa.auth.user();
 
@@ -28,7 +25,6 @@ async function getUserInfo() {
             .from('post')
             .select('*')
             .eq('email_id', email)
-            .gte('created_at', twentyFourHoursAgo);
 
         if (createdPostsError) {
             console.error('Fehler beim Abrufen der erstellten Posts: ', createdPostsError.message);
@@ -36,11 +32,26 @@ async function getUserInfo() {
             const infoContainerCurrent = document.getElementById('infoContainerCurrent');
 
             if (infoContainerCurrent) {
-                for (const post of createdPosts) {
-                    const postElement = document.createElement('div');
-                    postElement.textContent = `Aktivität: ${post.kindofactivity}, Adresse: ${post.adresse}`;
-                    infoContainerCurrent.appendChild(postElement);
+                // Zuerst entfernen wir alle vorhandenen Posts
+                while (infoContainerCurrent.firstChild) {
+                    infoContainerCurrent.removeChild(infoContainerCurrent.firstChild);
                 }
+            
+                // Dann fügen wir den neuesten Post hinzu
+                if (createdPosts.length > 0) {
+                    const post = createdPosts[createdPosts.length - 1];
+                    const postElement = document.createElement('ul');
+            
+                    const activityItem = document.createElement('li');
+                    activityItem.textContent = `Aktivität: ${post.kindofactivity}`;
+                    postElement.appendChild(activityItem);
+            
+                    const addressItem = document.createElement('li');
+                    addressItem.textContent = `Adresse: ${post.adresse}`;
+                    postElement.appendChild(addressItem);
+            
+                    infoContainerCurrent.appendChild(postElement);
+                }       
             } else {
                 console.log("Element mit der ID 'infoContainerCurrent' nicht gefunden.");
             }
