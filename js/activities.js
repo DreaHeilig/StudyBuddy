@@ -12,7 +12,7 @@ function formatTimestampForDatabase(timestamp) {
     return formattedTimestamp;
 }
 const formattedTimestamp = await getUserInfo();
-console.log(formattedTimestamp);
+console.log()
 
 async function getUserInfo() {
     const user = supa.auth.user();

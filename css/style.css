@@ -584,17 +584,19 @@ section {
 }
 
 #swipeRight {
+  max-width: 100%;
   position: fixed;
-  top: 35%;
-  left: 65%;
+  top: 18rem;
+  margin-left: 18em;
   transform: translate(-50%, -50%);
   z-index: 9999;
 }
 
 #swipeLeft {
+  max-width: 100%;
   position: fixed;
-  top: 35%;
-  left: 35%;
+  top: 18rem;
+  margin-right: 12rem;
   transform: translate(-50%, -50%);
   z-index: 9999;
 }
