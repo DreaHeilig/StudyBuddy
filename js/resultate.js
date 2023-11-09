@@ -140,9 +140,15 @@ async function handleSwipeRight() {
       } else {
         console.log("New request inserted successfully!");
         
-        // Increment the post index to show the next post
-        currentPostIndex++;
-        fetchAndDisplayPost(currentPostIndex);
+        document.getElementById('confirmationIcon').style.display = 'block'; // Zeige das Bestätigungssymbol
+
+        setTimeout(() => {
+          // Increment the post index to show the next post
+          currentPostIndex++;
+          fetchAndDisplayPost(currentPostIndex);
+          document.getElementById('confirmationIcon').style.display = 'none'; // Verstecke das Bestätigungssymbol
+        }, 3000); // Warte 3 Sekunden, bevor zur menu.html Seite wechseln
+
       }
     } else {
       console.log("postEmail or userEmail is missing.");
