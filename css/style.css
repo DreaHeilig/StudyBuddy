@@ -588,7 +588,7 @@ section {
 #infoBoxbestaetigung {
   display: flex;
   flex-direction: column;
-  width: 100%;
+  width: 80%;
   padding: 10px 30px;
   justify-content: center;
   align-items: center;
@@ -597,8 +597,8 @@ section {
   border-radius: 20px;
   background: #FFF;
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-  height: 38vh; /*höhe der Box für Antworten*/
-  overflow: scroll; overflow-x: hidden; /*scrollfunktion eingeführt*/
+  height: 38vh;
+  overflow: scroll; overflow-x: hidden; 
   margin: 0 auto;
 }
 
@@ -616,6 +616,11 @@ section {
 .descriptorText span {
   font-weight: normal;
   font-size: 1rem;
+}
+section {
+  display:flex;
+  justify-content: space-evenly;
+  margin-top: 2rem;
 }
 
 /* css --------------congrats--------------------- */
