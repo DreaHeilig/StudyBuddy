@@ -87,3 +87,64 @@ if (editNameButton) {
   editNameButton.addEventListener('click', toggleEditDoneMode);
 }
 
+//Erstellte Aktivitäten
+
+
+async function getOwnActivity() {
+  const user = supa.auth.user();
+
+  if (user) {
+    // Use the authenticated user's email to count the number of created activities
+    const { data: activityCount, error: countError } = await supa
+        .from('post') // Assuming 'post' is the table name
+        .select('email_id') // Select the email_id column
+        .eq('email_id', user.email);
+
+    if (countError) {
+        console.error("Error fetching activities: ", countError.message);
+    } else {
+        const ownactivitysInput = document.getElementById('ownactivitys');
+        if (ownactivitysInput) {
+            ownactivitysInput.value = activityCount ? activityCount.length : 0;
+        } else {
+            console.log("Element with ID 'ownactivitys' not found.");
+        }
+    }
+} else {
+    console.log("Not authenticated.");
+}
+}
+
+// ... (Andere JavaScript-Funktionen bleiben unverändert)
+
+getOwnActivity();
+
+
+
+// Funktion zum Abrufen der Anzahl der teilgenommenen Aktivitäten
+async function getParticipatedActivityCount() {
+  const user = supa.auth.user();
+
+  if (user) {
+    // Verwenden Sie die E-Mail des authentifizierten Benutzers, um die Anzahl der teilgenommenen Aktivitäten zu zählen
+    const { data: participatedActivityCount, error: countError } = await supa
+      .from('request') // Annahme: 'request' ist der Tabellenname
+      .select('user_email') // Wählen Sie die Spalte user_email aus
+      .eq('user_email', user.email);
+
+    if (countError) {
+      console.error("Error fetching participated activities: ", countError.message);
+    } else {
+      const doneactivitysInput = document.getElementById('doneactivitys');
+      if (doneactivitysInput) {
+        doneactivitysInput.value = participatedActivityCount ? participatedActivityCount.length : 0;
+      } else {
+        console.log("Element with ID 'doneactivitys' not found.");
+      }
+    }
+  } else {
+    console.log("Not authenticated.");
+  }
+}
+
+getParticipatedActivityCount();

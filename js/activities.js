@@ -68,6 +68,7 @@ getUserInfo();
             if (user) {
                 const email = user.email;
         
+                // Abrufen aller Teilnahmen des angemeldeten Users
                 const { data: userParticipations, error: userParticipationsError } = await supa
                     .from('request')
                     .select('post_email')
@@ -81,7 +82,6 @@ getUserInfo();
                     const postEmails = userParticipations.map(participation => participation.post_email).filter(email => email);
         
                     console.log('postEmails:', postEmails); // Debugging-Ausgabe
-
                     if (postEmails.length > 0) {
                         const { data: participatedPosts, error: participatedPostsError } = await supa
                             .from('post')
@@ -94,6 +94,11 @@ getUserInfo();
                             const infoContainerParticipated = document.getElementById('infoContainerParticipated');
         
                             if (infoContainerParticipated) {
+                                // Zuerst entfernen wir alle vorhandenen Posts
+                                while (infoContainerParticipated.firstChild) {
+                                    infoContainerParticipated.removeChild(infoContainerParticipated.firstChild);
+                                }
+        
                                 for (const post of participatedPosts) {
                                     const postElement = document.createElement('ul');
         
@@ -104,6 +109,7 @@ getUserInfo();
                                     const addressItem = document.createElement('li');
                                     addressItem.textContent = `Adresse: ${post.adresse}`;
                                     postElement.appendChild(addressItem);
+                                    console.log('apfel');
         
                                     infoContainerParticipated.appendChild(postElement);
                                 }
@@ -117,3 +123,4 @@ getUserInfo();
         }
         
         getParticipatedActivities();
+        
