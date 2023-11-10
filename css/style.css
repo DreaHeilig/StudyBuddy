@@ -323,6 +323,24 @@ button {
   width: 30vh;
 }
 
+  /* css --------------activities-page---------------------*/
+
+#infoContainerCurrent, #infoContainerParticipated{
+  border-style:groove;
+  border-radius: 1rem;
+  max-height: 25vh;
+  overflow-y: auto;
+}
+
+ul {
+  list-style-type: none;
+  padding-inline-start: 1rem;
+}
+
+ul li {
+  margin-bottom: 0.25rem; 
+}
+
   /* css --------------menu-page---------------------*/
 
 .box {

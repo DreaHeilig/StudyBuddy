@@ -64,47 +64,47 @@ getUserInfo();
         // Abrufen aller Events, an denen der angemeldete User teilgenommen hat
         async function getParticipatedActivities() {
             const user = supa.auth.user();
-            
+        
             if (user) {
                 const email = user.email;
-                
+        
                 const { data: userParticipations, error: userParticipationsError } = await supa
                     .from('request')
-                    .select('post_id')
+                    .select('post_email')
                     .eq('user_email', email);
-                
+        
                 console.log('userParticipations:', userParticipations); // Debugging-Ausgabe
-                
+        
                 if (userParticipationsError) {
                     console.error('Fehler beim Abrufen der teilgenommenen Aktivitäten: ', userParticipationsError.message);
                 } else if (userParticipations && Array.isArray(userParticipations)) {
-                    const postIds = userParticipations.map(participation => participation.post_id).filter(id => id !== null && id !== undefined);
-                    
-                    console.log('postIds:', postIds); // Debugging-Ausgabe
-                    
-                    if (postIds.length > 0) {
+                    const postEmails = userParticipations.map(participation => participation.post_email).filter(email => email);
+        
+                    console.log('postEmails:', postEmails); // Debugging-Ausgabe
+
+                    if (postEmails.length > 0) {
                         const { data: participatedPosts, error: participatedPostsError } = await supa
                             .from('post')
-                            .select('*')
-                            .in('id', postIds);
-                            
+                            .select('email_id, kindofactivity, adresse')
+                            .in('email_id', postEmails);
+        
                         if (participatedPostsError) {
                             console.error('Fehler beim Abrufen der teilgenommenen Aktivitäten: ', participatedPostsError.message);
                         } else {
                             const infoContainerParticipated = document.getElementById('infoContainerParticipated');
-                            
+        
                             if (infoContainerParticipated) {
                                 for (const post of participatedPosts) {
                                     const postElement = document.createElement('ul');
-                                    
+        
                                     const activityItem = document.createElement('li');
                                     activityItem.textContent = `Aktivität: ${post.kindofactivity}`;
                                     postElement.appendChild(activityItem);
-                                    
+        
                                     const addressItem = document.createElement('li');
                                     addressItem.textContent = `Adresse: ${post.adresse}`;
                                     postElement.appendChild(addressItem);
-                                    
+        
                                     infoContainerParticipated.appendChild(postElement);
                                 }
                             } else {
@@ -113,8 +113,7 @@ getUserInfo();
                         }
                     }
                 }
-            }   
+            }
         }
         
         getParticipatedActivities();
-        
