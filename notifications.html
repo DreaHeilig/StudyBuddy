@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Notification</title>
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/notifs.css">
     <script src="https://unpkg.com/@supabase/supabase-js@2"> </script>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@1.29.0/dist/umd/supabase.min.js"></script>
 </head>
@@ -13,6 +13,19 @@
     <main>
 
         <h1 class="blackTitle">Benachrichtigungen</h1>
+
+        <div class="box" id="congratulations" style="display: none;">
+            <div id="congratsTitleContainer">
+                <p id="congratsTitle">StudyBuddy gefunden!</p>
+            </div>
+            <div class="congratsTextContainer">
+                <p class="congratsText">Wir haben <span class="matchUserContainer"></span> die Adresse deiner Aktivität gegeben. <span class="matchUserContainer"></span> ist auf dem Weg zu dir und wird sich in Kürze zu dir gesellen.</p>
+            </div>
+            <div class="congratsTextContainer">
+                <p class="congratsText">Vergewissere dich, dass <span class="matchUserContainer"></span> dich schnell am Ort finden kann, damit ihr gleich loslegen könnt.</p>
+            </div>
+            <button id="confirmMatchButton"><img id="confirmMatch" src="img/checkmark.svg" alt="Bestätigen"></button>
+        </div>
 
         <div id="notifContainerAll">
             <!-- <div class="notifContainer" id="notifX">
@@ -24,6 +37,8 @@
         </div>
 
     </main>
+
+    
 
     <footer class="footer">
         <a href="/suchen.html"><img id="imghome" src="img/home.svg" alt="home"></a>

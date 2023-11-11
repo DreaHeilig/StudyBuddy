@@ -94,15 +94,44 @@ function appendNotification(id, user_email) {
 
     // Add event listener to the declineButton
     declineButton.addEventListener('click', async function() {
-        const idString = id.toString(); // Convert id to a string
-        const lastCharacter = idString.slice(-1); // Get the last character of the id
-        const lastInteger = parseInt(lastCharacter); // Convert it to an integer
-
+        const numericId = extractNumericId(id); // Extract the numeric part of the id
         // Update the request table and then remove the notification
-        await updateRequest(lastInteger);
+        await updateRequest(numericId);
+        notifContainerAll.removeChild(notifContainer); // Remove the parent notifContainer div
+    });
+
+    acceptButton.addEventListener('click', async function() {
+        const numericId = extractNumericId(id); // Extract the numeric part of the id
+        // Update the request table and then remove the notification
+        await updateRequestAccept(numericId);
+
+                // Show the "congratulations" element
+                const congratulationsElement = document.getElementById('congratulations');
+                congratulationsElement.style.display = 'block';
+        
+                // Insert the user_email into the span element with class "matchUserContainer"
+                const matchUserContainers = document.querySelectorAll('.matchUserContainer');
+                matchUserContainers.forEach(container => {
+                    container.textContent = user_email;
+                });
+
+        
         notifContainerAll.removeChild(notifContainer); // Remove the parent notifContainer div
     });
 }
+
+function extractNumericId(id) {
+    // Use a regular expression to extract the numeric part of the id
+    return parseInt(id);
+}
+
+// Add event listener to the confirmMatchButton
+const confirmMatchButton = document.getElementById('confirmMatchButton');
+confirmMatchButton.addEventListener('click', function() {
+    // Hide the "congratulations" element
+    const congratulationsElement = document.getElementById('congratulations');
+    congratulationsElement.style.display = 'none';
+});
 
 async function updateRequest(id) {
     try {
@@ -126,3 +155,24 @@ async function updateRequest(id) {
     }
 }
 
+async function updateRequestAccept(id) {
+    try {
+        const { data, error } = await supa
+            .from('request')
+            .select('id')
+            .eq('id', id);
+
+        if (error) {
+            console.error("Error selecting data from the request table: ", error.message);
+        } else {
+            if (data && data.length > 0) {
+                await supa
+                    .from('request')
+                    .update({ accept: true })
+                    .eq('id', id);
+            }
+        }
+    } catch (error) {
+        console.error("Error updating the request table: ", error.message);
+    }
+}
