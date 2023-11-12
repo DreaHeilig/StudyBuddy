@@ -18,6 +18,8 @@ main {
   background-color: var(--white-background);
   display: flex;
   flex-direction: column;
+  font-family: 'DM Sans'; 
+
 }
 
 h1 {
@@ -77,7 +79,7 @@ h2 {
 
 #startScreen h1 {
   color: #000;
-  font-family: DM Sans;
+  font-family: 'DM Sans';
   font-size: 3rem;
   font-style: normal;
   font-weight: 700;
@@ -418,7 +420,11 @@ footer {
 .blackTitle {
   color: #000;
   text-align: center;
+<<<<<<< Updated upstream
   font-family: 'DM Sans';  
+=======
+  font-family: 'DM Sans'; 
+>>>>>>> Stashed changes
   font-size: 1.4rem;
   font-style: normal;
   font-weight: 700;
